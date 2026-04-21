@@ -16,7 +16,7 @@ namespace LoanManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin2());
+            Application.Run(new FrmDashboard()); 
         }
     }
 }

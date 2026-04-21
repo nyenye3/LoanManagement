@@ -42,10 +42,10 @@ namespace LoanManagement
                 MessageBox.Show("Please select role", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             
                 MessageBox.Show("Welcome " + username, "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+                
 
         }
 
@@ -56,7 +56,7 @@ namespace LoanManagement
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void lblUsername_Click(object sender, EventArgs e)
