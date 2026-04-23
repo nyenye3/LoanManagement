@@ -59,7 +59,7 @@
             // lblCustomerId
             // 
             this.lblCustomerId.AutoSize = true;
-            this.lblCustomerId.Location = new System.Drawing.Point(77, 81);
+            this.lblCustomerId.Location = new System.Drawing.Point(77, 64);
             this.lblCustomerId.Name = "lblCustomerId";
             this.lblCustomerId.Size = new System.Drawing.Size(72, 13);
             this.lblCustomerId.TabIndex = 1;
@@ -68,7 +68,7 @@
             // lblLoanAmount
             // 
             this.lblLoanAmount.AutoSize = true;
-            this.lblLoanAmount.Location = new System.Drawing.Point(77, 138);
+            this.lblLoanAmount.Location = new System.Drawing.Point(77, 107);
             this.lblLoanAmount.Name = "lblLoanAmount";
             this.lblLoanAmount.Size = new System.Drawing.Size(77, 13);
             this.lblLoanAmount.TabIndex = 2;
@@ -77,7 +77,7 @@
             // lblInterstRate
             // 
             this.lblInterstRate.AutoSize = true;
-            this.lblInterstRate.Location = new System.Drawing.Point(77, 190);
+            this.lblInterstRate.Location = new System.Drawing.Point(77, 155);
             this.lblInterstRate.Name = "lblInterstRate";
             this.lblInterstRate.Size = new System.Drawing.Size(92, 13);
             this.lblInterstRate.TabIndex = 3;
@@ -86,7 +86,7 @@
             // lblLoanTerm
             // 
             this.lblLoanTerm.AutoSize = true;
-            this.lblLoanTerm.Location = new System.Drawing.Point(77, 251);
+            this.lblLoanTerm.Location = new System.Drawing.Point(77, 199);
             this.lblLoanTerm.Name = "lblLoanTerm";
             this.lblLoanTerm.Size = new System.Drawing.Size(109, 13);
             this.lblLoanTerm.TabIndex = 4;
@@ -95,7 +95,7 @@
             // lblApplicationDate
             // 
             this.lblApplicationDate.AutoSize = true;
-            this.lblApplicationDate.Location = new System.Drawing.Point(77, 300);
+            this.lblApplicationDate.Location = new System.Drawing.Point(77, 244);
             this.lblApplicationDate.Name = "lblApplicationDate";
             this.lblApplicationDate.Size = new System.Drawing.Size(92, 13);
             this.lblApplicationDate.TabIndex = 5;
@@ -103,28 +103,28 @@
             // 
             // txtLoanId
             // 
-            this.txtLoanId.Location = new System.Drawing.Point(228, 24);
+            this.txtLoanId.Location = new System.Drawing.Point(228, 21);
             this.txtLoanId.Name = "txtLoanId";
             this.txtLoanId.Size = new System.Drawing.Size(191, 20);
             this.txtLoanId.TabIndex = 6;
             // 
             // txtInterstRate
             // 
-            this.txtInterstRate.Location = new System.Drawing.Point(228, 183);
+            this.txtInterstRate.Location = new System.Drawing.Point(228, 148);
             this.txtInterstRate.Name = "txtInterstRate";
             this.txtInterstRate.Size = new System.Drawing.Size(191, 20);
             this.txtInterstRate.TabIndex = 7;
             // 
             // txtLoanAmount
             // 
-            this.txtLoanAmount.Location = new System.Drawing.Point(228, 131);
+            this.txtLoanAmount.Location = new System.Drawing.Point(228, 100);
             this.txtLoanAmount.Name = "txtLoanAmount";
             this.txtLoanAmount.Size = new System.Drawing.Size(191, 20);
             this.txtLoanAmount.TabIndex = 8;
             // 
             // txtLoanTerm
             // 
-            this.txtLoanTerm.Location = new System.Drawing.Point(228, 244);
+            this.txtLoanTerm.Location = new System.Drawing.Point(228, 192);
             this.txtLoanTerm.Name = "txtLoanTerm";
             this.txtLoanTerm.Size = new System.Drawing.Size(191, 20);
             this.txtLoanTerm.TabIndex = 9;
@@ -132,7 +132,7 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(77, 352);
+            this.lblStatus.Location = new System.Drawing.Point(77, 290);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(44, 13);
             this.lblStatus.TabIndex = 10;
@@ -143,7 +143,7 @@
             this.cmbCustomerId.FormattingEnabled = true;
             this.cmbCustomerId.Items.AddRange(new object[] {
             "-- Select Customer --"});
-            this.cmbCustomerId.Location = new System.Drawing.Point(228, 81);
+            this.cmbCustomerId.Location = new System.Drawing.Point(228, 64);
             this.cmbCustomerId.Name = "cmbCustomerId";
             this.cmbCustomerId.Size = new System.Drawing.Size(191, 21);
             this.cmbCustomerId.TabIndex = 11;
@@ -157,14 +157,14 @@
             "Active",
             "Paid",
             "Defaulted"});
-            this.cmbStatus.Location = new System.Drawing.Point(219, 344);
+            this.cmbStatus.Location = new System.Drawing.Point(228, 282);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(200, 21);
             this.cmbStatus.TabIndex = 12;
             // 
             // dtpApplicationDate
             // 
-            this.dtpApplicationDate.Location = new System.Drawing.Point(228, 300);
+            this.dtpApplicationDate.Location = new System.Drawing.Point(228, 237);
             this.dtpApplicationDate.Name = "dtpApplicationDate";
             this.dtpApplicationDate.Size = new System.Drawing.Size(200, 20);
             this.dtpApplicationDate.TabIndex = 13;
@@ -172,7 +172,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Green;
-            this.btnSave.Location = new System.Drawing.Point(105, 398);
+            this.btnSave.Location = new System.Drawing.Point(94, 322);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 14;
@@ -182,7 +182,7 @@
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnClear.Location = new System.Drawing.Point(238, 398);
+            this.btnClear.Location = new System.Drawing.Point(228, 322);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 15;
@@ -192,7 +192,7 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(373, 398);
+            this.btnDelete.Location = new System.Drawing.Point(373, 322);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 16;

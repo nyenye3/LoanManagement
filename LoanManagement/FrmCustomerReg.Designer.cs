@@ -144,7 +144,7 @@
             // txtCustomerId
             // 
             this.txtCustomerId.Location = new System.Drawing.Point(232, 28);
-            this.txtCustomerId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCustomerId.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustomerId.Name = "txtCustomerId";
             this.txtCustomerId.Size = new System.Drawing.Size(160, 20);
             this.txtCustomerId.TabIndex = 9;
@@ -152,7 +152,7 @@
             // txtTrnId
             // 
             this.txtTrnId.Location = new System.Drawing.Point(232, 149);
-            this.txtTrnId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTrnId.Margin = new System.Windows.Forms.Padding(2);
             this.txtTrnId.Name = "txtTrnId";
             this.txtTrnId.Size = new System.Drawing.Size(160, 20);
             this.txtTrnId.TabIndex = 10;
@@ -160,7 +160,7 @@
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(232, 102);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(160, 20);
             this.txtLastName.TabIndex = 11;
@@ -168,7 +168,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(232, 65);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(160, 20);
             this.txtFirstName.TabIndex = 12;
@@ -176,7 +176,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(232, 222);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(160, 20);
             this.txtEmail.TabIndex = 13;
@@ -184,7 +184,7 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(232, 260);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(160, 20);
             this.txtAddress.TabIndex = 14;
@@ -192,7 +192,7 @@
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(232, 189);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(160, 20);
             this.txtPhoneNumber.TabIndex = 15;
@@ -200,7 +200,7 @@
             // txtMonthlyIncome
             // 
             this.txtMonthlyIncome.Location = new System.Drawing.Point(232, 324);
-            this.txtMonthlyIncome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMonthlyIncome.Margin = new System.Windows.Forms.Padding(2);
             this.txtMonthlyIncome.Name = "txtMonthlyIncome";
             this.txtMonthlyIncome.Size = new System.Drawing.Size(160, 20);
             this.txtMonthlyIncome.TabIndex = 17;
@@ -208,8 +208,8 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Green;
-            this.btnSave.Location = new System.Drawing.Point(138, 389);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(127, 357);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(64, 26);
             this.btnSave.TabIndex = 18;
@@ -220,8 +220,8 @@
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.DarkGray;
-            this.btnClear.Location = new System.Drawing.Point(232, 389);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClear.Location = new System.Drawing.Point(232, 357);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(70, 26);
             this.btnClear.TabIndex = 19;
@@ -232,8 +232,8 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(335, 389);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Location = new System.Drawing.Point(335, 357);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(72, 26);
             this.btnDelete.TabIndex = 20;
@@ -250,7 +250,7 @@
             "Retired",
             "Student"});
             this.cmbEmploymentStatus.Location = new System.Drawing.Point(232, 289);
-            this.cmbEmploymentStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEmploymentStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEmploymentStatus.Name = "cmbEmploymentStatus";
             this.cmbEmploymentStatus.Size = new System.Drawing.Size(160, 21);
             this.cmbEmploymentStatus.TabIndex = 21;
@@ -282,7 +282,7 @@
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.lblCustomerId);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmCustomerReg";
             this.Text = "FrmCustomerReg";
             this.ResumeLayout(false);

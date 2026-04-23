@@ -45,6 +45,15 @@ namespace LoanManagement
 
             
                 MessageBox.Show("Welcome " + username, "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+           
+            FrmDashboard dashboard = new FrmDashboard();
+            dashboard.Show();   // opens new form
+
+            this.Hide();        // hides login form
+        
                 
 
         }

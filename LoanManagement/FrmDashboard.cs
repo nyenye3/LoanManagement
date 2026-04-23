@@ -36,7 +36,58 @@ namespace LoanManagement
               //  item.ForeColor = Color.White;
 
            // Controls.Add(statusStrip);
-        } 
+        }
 
+        private void LoadForm(Form form)
+        {
+            // Close existing child forms
+            foreach (Form f in this.MdiChildren)
+            {
+                f.Close();
+            }
+
+            // Open new form
+            form.MdiParent = this;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            form.Show();
+        }
+
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //FrmCustomerReg frm = new FrmCustomerReg();
+           // frm.MdiParent = this; 
+           // frm.Show();
+           
+            LoadForm(new FrmCustomerReg());
+        
+        }
+
+        private void loansToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* FrmLoan frm = new FrmLoan();
+             frm.MdiParent= this;
+             frm.Show();*/
+            LoadForm(new FrmLoan());
+        }
+
+        private void paymentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* FrmPayment frm = new FrmPayment();
+             frm.MdiParent= this;
+             frm.Show();*/
+
+            LoadForm(new FrmPayment());
+        }
+
+        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* FrmReport frm = new FrmReport();
+             frm.MdiParent= this;
+             frm.Show();*/
+
+            LoadForm(new FrmReport());
+        }
+    
     }
 }
