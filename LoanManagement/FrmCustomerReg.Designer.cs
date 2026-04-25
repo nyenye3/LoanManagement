@@ -239,6 +239,7 @@
             this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // cmbEmploymentStatus
             // 
@@ -284,7 +285,7 @@
             this.Controls.Add(this.lblCustomerId);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmCustomerReg";
-            this.Text = "FrmCustomerReg";
+            this.Text = "Customer";
             this.ResumeLayout(false);
             this.PerformLayout();
 

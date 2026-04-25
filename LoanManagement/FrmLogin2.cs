@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,18 +44,28 @@ namespace LoanManagement
                 return;
             }
 
-            
+
+
+
+
+            DBHelper db = new DBHelper();   
+
+            User user = db.Login(username, password);
+
+            if (user != null)
+            {
                 MessageBox.Show("Welcome " + username, "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                FrmDashboard dash = new FrmDashboard();
+                dash.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password");
+            }
 
-
-           
-            FrmDashboard dashboard = new FrmDashboard();
-            dashboard.Show();   // opens new form
-
-            this.Hide();        // hides login form
-        
-                
+    
 
         }
 

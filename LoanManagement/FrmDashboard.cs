@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 
 
@@ -20,7 +21,7 @@ namespace LoanManagement
             InitializeComponent();
         }
 
-        private User CurrentUser;
+       /* private User CurrentUser;
         private void BuildStatusStrip()
             
         {
@@ -36,7 +37,7 @@ namespace LoanManagement
               //  item.ForeColor = Color.White;
 
            // Controls.Add(statusStrip);
-        }
+        }*/
 
         private void LoadForm(Form form)
         {
@@ -88,6 +89,17 @@ namespace LoanManagement
 
             LoadForm(new FrmReport());
         }
-    
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            /*if (MessageBox.Show("Are you sure you want to logout?", "Logout",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                DataStore.CurrentUser = null;
+                clock.Stop();
+                new FrmLogin2().Show();
+                Close();
+            }*/
+        }
     }
 }

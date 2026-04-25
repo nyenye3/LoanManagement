@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -61,7 +62,7 @@ namespace LoanManagement
                 return;
             }
 
-            if (cmbEmploymentStatus.SelectedIndex <= 0)
+            if (cmbEmploymentStatus.SelectedIndex < 0)
             {
                 MessageBox.Show("Please select employment status", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -74,8 +75,48 @@ namespace LoanManagement
             }
 
 
-            MessageBox.Show("Customer Information saved successfully ", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            Customer customer = new Customer();
+
+            customer.firstName = txtFirstName.Text;
+            customer.lastName = txtLastName.Text;
+            customer.idTrn = txtTrnId.Text;
+            customer.phoneNumber = txtPhoneNumber.Text; 
+            customer.email = txtEmail.Text;
+            customer.Address = txtAddress.Text;
+            customer.employmentStatus = cmbEmploymentStatus.Text;
+            customer.monthlyIncome = Convert.ToDecimal(txtMonthlyIncome.Text);
+
+            DBHelper db = new DBHelper();
+            db.saveCustomer(customer);
+
+
+            MessageBox.Show("Customer saved successfully ", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+          
+            
         }
+
+        /*private void FrmCourse_Load(object sender, EventArgs e)
+        {
+            //Get an instance of DB Helper
+            DBHelper db = new DBHelper();
+
+            //Call the getAllCustomer method
+            List<Customer> allCustomer = db.getAllCustomer();
+
+        }*/
+
+
+
+        
+
+
+
+
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -93,6 +134,18 @@ namespace LoanManagement
           
         }
 
-        
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            /*int id = Convert.ToInt32(txtCustomerId.Text);
+
+
+
+            DBHelper db = new DBHelper();
+            db.deleteCustomer(id);
+
+            MessageBox.Show("Customer deleted!");*/
+
+
+        }
     }
 }
