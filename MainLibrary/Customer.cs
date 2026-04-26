@@ -8,7 +8,6 @@ namespace MainLibrary
 {
     public class Customer
     {
-        public int Id { get; set; }
         public int customerId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -19,6 +18,9 @@ namespace MainLibrary
         public string employmentStatus { get; set; }
         public decimal monthlyIncome { get; set; }
 
-   
+        public string FullName
+        {
+            get { return firstName + " " + lastName; }
+        }
     }
 }

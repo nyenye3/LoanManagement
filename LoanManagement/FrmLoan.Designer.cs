@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.lblLoanId = new System.Windows.Forms.Label();
-            this.lblCustomerId = new System.Windows.Forms.Label();
+            this.lblCustomer = new System.Windows.Forms.Label();
             this.lblLoanAmount = new System.Windows.Forms.Label();
-            this.lblInterstRate = new System.Windows.Forms.Label();
+            this.lblInterestRate = new System.Windows.Forms.Label();
             this.lblLoanTerm = new System.Windows.Forms.Label();
             this.lblApplicationDate = new System.Windows.Forms.Label();
             this.txtLoanId = new System.Windows.Forms.TextBox();
-            this.txtInterstRate = new System.Windows.Forms.TextBox();
+            this.txtInterestRate = new System.Windows.Forms.TextBox();
             this.txtLoanAmount = new System.Windows.Forms.TextBox();
             this.txtLoanTerm = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -56,14 +56,14 @@
             this.lblLoanId.TabIndex = 0;
             this.lblLoanId.Text = "Loan ID";
             // 
-            // lblCustomerId
+            // lblCustomer
             // 
-            this.lblCustomerId.AutoSize = true;
-            this.lblCustomerId.Location = new System.Drawing.Point(77, 64);
-            this.lblCustomerId.Name = "lblCustomerId";
-            this.lblCustomerId.Size = new System.Drawing.Size(72, 13);
-            this.lblCustomerId.TabIndex = 1;
-            this.lblCustomerId.Text = "Customer ID *";
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Location = new System.Drawing.Point(77, 64);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(58, 13);
+            this.lblCustomer.TabIndex = 1;
+            this.lblCustomer.Text = "Customer *";
             // 
             // lblLoanAmount
             // 
@@ -74,14 +74,14 @@
             this.lblLoanAmount.TabIndex = 2;
             this.lblLoanAmount.Text = "Loan Amount *";
             // 
-            // lblInterstRate
+            // lblInterestRate
             // 
-            this.lblInterstRate.AutoSize = true;
-            this.lblInterstRate.Location = new System.Drawing.Point(77, 155);
-            this.lblInterstRate.Name = "lblInterstRate";
-            this.lblInterstRate.Size = new System.Drawing.Size(92, 13);
-            this.lblInterstRate.TabIndex = 3;
-            this.lblInterstRate.Text = "Interest Rate (%) *";
+            this.lblInterestRate.AutoSize = true;
+            this.lblInterestRate.Location = new System.Drawing.Point(77, 155);
+            this.lblInterestRate.Name = "lblInterestRate";
+            this.lblInterestRate.Size = new System.Drawing.Size(92, 13);
+            this.lblInterestRate.TabIndex = 3;
+            this.lblInterestRate.Text = "Interest Rate (%) *";
             // 
             // lblLoanTerm
             // 
@@ -108,12 +108,12 @@
             this.txtLoanId.Size = new System.Drawing.Size(191, 20);
             this.txtLoanId.TabIndex = 6;
             // 
-            // txtInterstRate
+            // txtInterestRate
             // 
-            this.txtInterstRate.Location = new System.Drawing.Point(228, 148);
-            this.txtInterstRate.Name = "txtInterstRate";
-            this.txtInterstRate.Size = new System.Drawing.Size(191, 20);
-            this.txtInterstRate.TabIndex = 7;
+            this.txtInterestRate.Location = new System.Drawing.Point(228, 148);
+            this.txtInterestRate.Name = "txtInterestRate";
+            this.txtInterestRate.Size = new System.Drawing.Size(191, 20);
+            this.txtInterestRate.TabIndex = 7;
             // 
             // txtLoanAmount
             // 
@@ -147,6 +147,7 @@
             this.cmbCustomerId.Name = "cmbCustomerId";
             this.cmbCustomerId.Size = new System.Drawing.Size(191, 21);
             this.cmbCustomerId.TabIndex = 11;
+            this.cmbCustomerId.SelectedIndexChanged += new System.EventHandler(this.cmbCustomerId_SelectedIndexChanged);
             // 
             // cmbStatus
             // 
@@ -178,6 +179,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClear
             // 
@@ -214,16 +216,17 @@
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.txtLoanTerm);
             this.Controls.Add(this.txtLoanAmount);
-            this.Controls.Add(this.txtInterstRate);
+            this.Controls.Add(this.txtInterestRate);
             this.Controls.Add(this.txtLoanId);
             this.Controls.Add(this.lblApplicationDate);
             this.Controls.Add(this.lblLoanTerm);
-            this.Controls.Add(this.lblInterstRate);
+            this.Controls.Add(this.lblInterestRate);
             this.Controls.Add(this.lblLoanAmount);
-            this.Controls.Add(this.lblCustomerId);
+            this.Controls.Add(this.lblCustomer);
             this.Controls.Add(this.lblLoanId);
             this.Name = "FrmLoan";
             this.Text = "Loan";
+            this.Load += new System.EventHandler(this.FrmLoan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,13 +235,13 @@
         #endregion
 
         private System.Windows.Forms.Label lblLoanId;
-        private System.Windows.Forms.Label lblCustomerId;
+        private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.Label lblLoanAmount;
-        private System.Windows.Forms.Label lblInterstRate;
+        private System.Windows.Forms.Label lblInterestRate;
         private System.Windows.Forms.Label lblLoanTerm;
         private System.Windows.Forms.Label lblApplicationDate;
         private System.Windows.Forms.TextBox txtLoanId;
-        private System.Windows.Forms.TextBox txtInterstRate;
+        private System.Windows.Forms.TextBox txtInterestRate;
         private System.Windows.Forms.TextBox txtLoanAmount;
         private System.Windows.Forms.TextBox txtLoanTerm;
         private System.Windows.Forms.Label lblStatus;

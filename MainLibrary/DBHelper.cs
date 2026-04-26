@@ -154,40 +154,61 @@ namespace MainLibrary
         }
 
 
-        /* public List<Customers> getAllCustomers()
-         {
-             List<Customers> allCustomers = new List<Customers>();
+        
+
+        public List<Customer> getAllCustomers()
+        {
+            List<Customer> allCustomers = new List<Customer>();
 
              //connection
-             SqlConnection sqlConnection = new SqlConnection(connectionString);
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
 
-             //command
-             string sql = "Select * from Customers";
-             SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+            string sql = "SELECT * FROM Customers";
+            SqlCommand cmd = new SqlCommand(sql, sqlConnection);
 
              //open database connection
-             sqlConnection.Open();
+            sqlConnection.Open(); 
 
              //get data
-             SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
 
-             while (reader.Read())
-             {
+            while (reader.Read())
+            {
+                Customer customer = new Customer();
 
-                 Customers customers = new Customers();
-                 //customers.UserID = Convert.ToInt16(reader["id"]);
-                 customers.Username = reader["username"].ToString();
-                 customers.Password = reader["password"].ToString();
-                // customers.Role = reader["role"].ToString();
-                 allUsers.Add(user);
-             }
+                customer.customerId = Convert.ToInt32(reader["customerId"]);
+                customer.firstName = reader["firstName"].ToString();
+                customer.lastName = reader["lastName"].ToString();
+
+                allCustomers.Add(customer);
+            }
+
+            sqlConnection.Close();
+
+            return allCustomers;
+        }
 
 
+        public void saveLoan(Loan loan)
+        {
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
 
+            string sql = "INSERT INTO Loan (customerId, loanAmount, interestRate, loanTerm, applicationDate, status) " +
+                         "VALUES (@customerId, @loanAmount, @interestRate, @loanTerm, @applicationDate, @status)";
 
-             return allUser;
-         }*/
+            SqlCommand cmd = new SqlCommand(sql, sqlConnection);
 
+            cmd.Parameters.AddWithValue("@customerId", loan.customerId);
+            cmd.Parameters.AddWithValue("@loanAmount", loan.loanAmount);
+            cmd.Parameters.AddWithValue("@interestRate", loan.interestRate);
+            cmd.Parameters.AddWithValue("@loanTerm", loan.loanTerm);
+            cmd.Parameters.AddWithValue("@applicationDate", loan.applicationDate);
+            cmd.Parameters.AddWithValue("@status", loan.status);
+
+            sqlConnection.Open();
+            cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
     }
 
 }
