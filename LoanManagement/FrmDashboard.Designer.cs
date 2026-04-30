@@ -41,6 +41,7 @@
             this.lblDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDashboard.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             this.loansToolStripMenuItem,
             this.paymentsToolStripMenuItem,
             this.reportsToolStripMenuItem,
+            this.calculatorToolStripMenuItem,
             this.systemToolStripMenuItem});
             this.menuDashboard.Location = new System.Drawing.Point(0, 0);
             this.menuDashboard.Name = "menuDashboard";
@@ -115,9 +117,11 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(180, 22);
             this.btnExit.Text = "Exit";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // statusStrip
             // 
+            this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(80)))), ((int)(((byte)(160)))));
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblUser,
             this.lblDate,
@@ -128,42 +132,59 @@
             this.statusStrip.Size = new System.Drawing.Size(800, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
+            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip_ItemClicked);
             // 
             // lblUser
             // 
+            this.lblUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(118, 17);
-            this.lblUser.Text = "toolStripStatusLabel1";
+            this.lblUser.Size = new System.Drawing.Size(36, 17);
+            this.lblUser.Text = "User: ";
             // 
             // lblDate
             // 
+            this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(118, 17);
-            this.lblDate.Text = "toolStripStatusLabel2";
+            this.lblDate.Size = new System.Drawing.Size(37, 17);
+            this.lblDate.Text = "Date: ";
             // 
             // lblTime
             // 
+            this.lblTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(118, 17);
-            this.lblTime.Text = "toolStripStatusLabel3";
+            this.lblTime.Size = new System.Drawing.Size(40, 17);
+            this.lblTime.Text = "Time: ";
             // 
             // lblStatus
             // 
+            this.lblStatus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(118, 17);
-            this.lblStatus.Text = "toolStripStatusLabel4";
+            this.lblStatus.Size = new System.Drawing.Size(42, 17);
+            this.lblStatus.Text = "Status:";
+            // 
+            // calculatorToolStripMenuItem
+            // 
+            this.calculatorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.calculatorToolStripMenuItem.Text = "Calculator";
+            this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
             // 
             // FrmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackgroundImage = global::LoanManagement.Properties.Resources.loan3;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuDashboard);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuDashboard;
             this.Name = "FrmDashboard";
             this.Text = "Dashboard";
+            this.Load += new System.EventHandler(this.FrmDashboard_Load);
             this.menuDashboard.ResumeLayout(false);
             this.menuDashboard.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -188,5 +209,6 @@
         private System.Windows.Forms.ToolStripStatusLabel lblDate;
         private System.Windows.Forms.ToolStripStatusLabel lblTime;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
     }
 }

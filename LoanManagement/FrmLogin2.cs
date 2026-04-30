@@ -46,8 +46,6 @@ namespace LoanManagement
 
 
 
-
-
             DBHelper db = new DBHelper();   
 
             User user = db.Login(username, password);
@@ -57,15 +55,15 @@ namespace LoanManagement
                 MessageBox.Show("Welcome " + username, "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 FrmDashboard dash = new FrmDashboard();
+                dash.LoadStatusBar(user.Username, user.Role);
                 dash.Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Invalid username or password");
+                MessageBox.Show("Invalid username or password", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-    
 
         }
 

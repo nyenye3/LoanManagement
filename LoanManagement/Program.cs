@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,11 @@ namespace LoanManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin2()); 
+            Application.Run(new FrmLogin2());
+
+
+            Loan.LoanMessage();
+
         }
     }
 }

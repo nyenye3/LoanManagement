@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPayment));
             this.lblPaymentId = new System.Windows.Forms.Label();
             this.lblLoanId = new System.Windows.Forms.Label();
             this.lblPaymentDate = new System.Windows.Forms.Label();
@@ -40,12 +42,41 @@
             this.dtpPaymentDate = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.loanManagementSystemDataSet = new LoanManagement.LoanManagementSystemDataSet();
+            this.paymentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymentTableAdapter = new LoanManagement.LoanManagementSystemDataSetTableAdapters.paymentTableAdapter();
+            this.tableAdapterManager = new LoanManagement.LoanManagementSystemDataSetTableAdapters.TableAdapterManager();
+            this.paymentBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.paymentDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.paymentBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.loanManagementSystemDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingNavigator)).BeginInit();
+            this.paymentBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPaymentId
             // 
             this.lblPaymentId.AutoSize = true;
-            this.lblPaymentId.Location = new System.Drawing.Point(83, 50);
+            this.lblPaymentId.Location = new System.Drawing.Point(83, 36);
             this.lblPaymentId.Name = "lblPaymentId";
             this.lblPaymentId.Size = new System.Drawing.Size(62, 13);
             this.lblPaymentId.TabIndex = 0;
@@ -54,7 +85,7 @@
             // lblLoanId
             // 
             this.lblLoanId.AutoSize = true;
-            this.lblLoanId.Location = new System.Drawing.Point(83, 117);
+            this.lblLoanId.Location = new System.Drawing.Point(83, 79);
             this.lblLoanId.Name = "lblLoanId";
             this.lblLoanId.Size = new System.Drawing.Size(52, 13);
             this.lblLoanId.TabIndex = 1;
@@ -63,7 +94,7 @@
             // lblPaymentDate
             // 
             this.lblPaymentDate.AutoSize = true;
-            this.lblPaymentDate.Location = new System.Drawing.Point(83, 175);
+            this.lblPaymentDate.Location = new System.Drawing.Point(83, 121);
             this.lblPaymentDate.Name = "lblPaymentDate";
             this.lblPaymentDate.Size = new System.Drawing.Size(81, 13);
             this.lblPaymentDate.TabIndex = 2;
@@ -72,7 +103,7 @@
             // lblAmountPaid
             // 
             this.lblAmountPaid.AutoSize = true;
-            this.lblAmountPaid.Location = new System.Drawing.Point(83, 240);
+            this.lblAmountPaid.Location = new System.Drawing.Point(83, 168);
             this.lblAmountPaid.Name = "lblAmountPaid";
             this.lblAmountPaid.Size = new System.Drawing.Size(74, 13);
             this.lblAmountPaid.TabIndex = 3;
@@ -81,7 +112,7 @@
             // lblRemainingBalance
             // 
             this.lblRemainingBalance.AutoSize = true;
-            this.lblRemainingBalance.Location = new System.Drawing.Point(83, 296);
+            this.lblRemainingBalance.Location = new System.Drawing.Point(71, 208);
             this.lblRemainingBalance.Name = "lblRemainingBalance";
             this.lblRemainingBalance.Size = new System.Drawing.Size(102, 13);
             this.lblRemainingBalance.TabIndex = 4;
@@ -89,21 +120,22 @@
             // 
             // txtPaymenId
             // 
-            this.txtPaymenId.Location = new System.Drawing.Point(192, 43);
+            this.txtPaymenId.Location = new System.Drawing.Point(192, 29);
             this.txtPaymenId.Name = "txtPaymenId";
             this.txtPaymenId.Size = new System.Drawing.Size(200, 20);
             this.txtPaymenId.TabIndex = 5;
             // 
             // txtAmountPaid
             // 
-            this.txtAmountPaid.Location = new System.Drawing.Point(192, 240);
+            this.txtAmountPaid.Location = new System.Drawing.Point(192, 161);
             this.txtAmountPaid.Name = "txtAmountPaid";
             this.txtAmountPaid.Size = new System.Drawing.Size(200, 20);
             this.txtAmountPaid.TabIndex = 6;
+            this.txtAmountPaid.TextChanged += new System.EventHandler(this.txtAmountPaid_TextChanged);
             // 
             // txtRemainingBalance
             // 
-            this.txtRemainingBalance.Location = new System.Drawing.Point(192, 293);
+            this.txtRemainingBalance.Location = new System.Drawing.Point(192, 208);
             this.txtRemainingBalance.Name = "txtRemainingBalance";
             this.txtRemainingBalance.Size = new System.Drawing.Size(200, 20);
             this.txtRemainingBalance.TabIndex = 7;
@@ -113,44 +145,255 @@
             this.cmbLoanId.FormattingEnabled = true;
             this.cmbLoanId.Items.AddRange(new object[] {
             "-- Select Loan --"});
-            this.cmbLoanId.Location = new System.Drawing.Point(192, 114);
+            this.cmbLoanId.Location = new System.Drawing.Point(192, 71);
             this.cmbLoanId.Name = "cmbLoanId";
             this.cmbLoanId.Size = new System.Drawing.Size(200, 21);
             this.cmbLoanId.TabIndex = 8;
             // 
             // dtpPaymentDate
             // 
-            this.dtpPaymentDate.Location = new System.Drawing.Point(192, 168);
+            this.dtpPaymentDate.Location = new System.Drawing.Point(192, 114);
             this.dtpPaymentDate.Name = "dtpPaymentDate";
             this.dtpPaymentDate.Size = new System.Drawing.Size(200, 20);
             this.dtpPaymentDate.TabIndex = 9;
+            this.dtpPaymentDate.ValueChanged += new System.EventHandler(this.dtpPaymentDate_ValueChanged);
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnSave.Location = new System.Drawing.Point(162, 348);
+            this.btnSave.Location = new System.Drawing.Point(153, 241);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btnClear.Location = new System.Drawing.Point(264, 348);
+            this.btnClear.Location = new System.Drawing.Point(249, 241);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
-            this.btnClear.Text = "Clear ";
+            this.btnClear.Text = "&Clear ";
             this.btnClear.UseVisualStyleBackColor = false;
+            // 
+            // loanManagementSystemDataSet
+            // 
+            this.loanManagementSystemDataSet.DataSetName = "LoanManagementSystemDataSet";
+            this.loanManagementSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // paymentBindingSource
+            // 
+            this.paymentBindingSource.DataMember = "payment";
+            this.paymentBindingSource.DataSource = this.loanManagementSystemDataSet;
+            // 
+            // paymentTableAdapter
+            // 
+            this.paymentTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.customersTableAdapter = null;
+            this.tableAdapterManager.loanTableAdapter = null;
+            this.tableAdapterManager.paymentTableAdapter = this.paymentTableAdapter;
+            this.tableAdapterManager.UpdateOrder = LoanManagement.LoanManagementSystemDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.userrTableAdapter = null;
+            // 
+            // paymentBindingNavigator
+            // 
+            this.paymentBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.paymentBindingNavigator.BindingSource = this.paymentBindingSource;
+            this.paymentBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.paymentBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.paymentBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem,
+            this.paymentBindingNavigatorSaveItem});
+            this.paymentBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.paymentBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.paymentBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.paymentBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.paymentBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.paymentBindingNavigator.Name = "paymentBindingNavigator";
+            this.paymentBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.paymentBindingNavigator.Size = new System.Drawing.Size(800, 25);
+            this.paymentBindingNavigator.TabIndex = 12;
+            this.paymentBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // paymentDataGridView
+            // 
+            this.paymentDataGridView.AutoGenerateColumns = false;
+            this.paymentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.paymentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.paymentDataGridView.DataSource = this.paymentBindingSource;
+            this.paymentDataGridView.Location = new System.Drawing.Point(44, 281);
+            this.paymentDataGridView.Name = "paymentDataGridView";
+            this.paymentDataGridView.Size = new System.Drawing.Size(547, 220);
+            this.paymentDataGridView.TabIndex = 13;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "paymentId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "paymentId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "loanId";
+            this.dataGridViewTextBoxColumn2.HeaderText = "loanId";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "paymentDate";
+            this.dataGridViewTextBoxColumn3.HeaderText = "paymentDate";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "amountPaid";
+            this.dataGridViewTextBoxColumn4.HeaderText = "amountPaid";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "remainingBalance";
+            this.dataGridViewTextBoxColumn5.HeaderText = "remainingBalance";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExit.Location = new System.Drawing.Point(352, 240);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 14;
+            this.btnExit.Text = "&Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // paymentBindingNavigatorSaveItem
+            // 
+            this.paymentBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.paymentBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("paymentBindingNavigatorSaveItem.Image")));
+            this.paymentBindingNavigatorSaveItem.Name = "paymentBindingNavigatorSaveItem";
+            this.paymentBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
+            this.paymentBindingNavigatorSaveItem.Text = "Save Data";
+            this.paymentBindingNavigatorSaveItem.Click += new System.EventHandler(this.paymentBindingNavigatorSaveItem_Click);
             // 
             // FrmPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 583);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.paymentDataGridView);
+            this.Controls.Add(this.paymentBindingNavigator);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dtpPaymentDate);
@@ -165,6 +408,13 @@
             this.Controls.Add(this.lblPaymentId);
             this.Name = "FrmPayment";
             this.Text = "Payment";
+            this.Load += new System.EventHandler(this.FrmPayment_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.loanManagementSystemDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingNavigator)).EndInit();
+            this.paymentBindingNavigator.ResumeLayout(false);
+            this.paymentBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +434,29 @@
         private System.Windows.Forms.DateTimePicker dtpPaymentDate;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClear;
+        private LoanManagementSystemDataSet loanManagementSystemDataSet;
+        private System.Windows.Forms.BindingSource paymentBindingSource;
+        private LoanManagementSystemDataSetTableAdapters.paymentTableAdapter paymentTableAdapter;
+        private LoanManagementSystemDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.BindingNavigator paymentBindingNavigator;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton paymentBindingNavigatorSaveItem;
+        private System.Windows.Forms.DataGridView paymentDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Button btnExit;
     }
 }

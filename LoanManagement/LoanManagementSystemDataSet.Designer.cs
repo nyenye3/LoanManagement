@@ -384,8 +384,6 @@ namespace LoanManagement {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class customersDataTable : global::System.Data.TypedTableBase<customersRow> {
             
-            private global::System.Data.DataColumn columnid;
-            
             private global::System.Data.DataColumn columncustomerId;
             
             private global::System.Data.DataColumn columnfirstName;
@@ -402,7 +400,7 @@ namespace LoanManagement {
             
             private global::System.Data.DataColumn columnemploymentStatus;
             
-            private global::System.Data.DataColumn columnmontlyIncome;
+            private global::System.Data.DataColumn columnmonthlyIncome;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
@@ -435,14 +433,6 @@ namespace LoanManagement {
             protected customersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -511,9 +501,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn montlyIncomeColumn {
+            public global::System.Data.DataColumn monthlyIncomeColumn {
                 get {
-                    return this.columnmontlyIncome;
+                    return this.columnmonthlyIncome;
                 }
             }
             
@@ -554,11 +544,10 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public customersRow AddcustomersRow(int customerId, string firstName, string lastName, int idTrn, int phoneNumber, string email, string address, string employmentStatus, double montlyIncome) {
+            public customersRow AddcustomersRow(string firstName, string lastName, string idTrn, string phoneNumber, string email, string address, string employmentStatus, decimal monthlyIncome) {
                 customersRow rowcustomersRow = ((customersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        customerId,
                         firstName,
                         lastName,
                         idTrn,
@@ -566,7 +555,7 @@ namespace LoanManagement {
                         email,
                         address,
                         employmentStatus,
-                        montlyIncome};
+                        monthlyIncome};
                 rowcustomersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcustomersRow);
                 return rowcustomersRow;
@@ -574,9 +563,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public customersRow FindByid(int id) {
+            public customersRow FindBycustomerId(int customerId) {
                 return ((customersRow)(this.Rows.Find(new object[] {
-                            id})));
+                            customerId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -596,7 +585,6 @@ namespace LoanManagement {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal void InitVars() {
-                this.columnid = base.Columns["id"];
                 this.columncustomerId = base.Columns["customerId"];
                 this.columnfirstName = base.Columns["firstName"];
                 this.columnlastName = base.Columns["lastName"];
@@ -605,23 +593,21 @@ namespace LoanManagement {
                 this.columnemail = base.Columns["email"];
                 this.columnaddress = base.Columns["address"];
                 this.columnemploymentStatus = base.Columns["employmentStatus"];
-                this.columnmontlyIncome = base.Columns["montlyIncome"];
+                this.columnmonthlyIncome = base.Columns["monthlyIncome"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
                 this.columncustomerId = new global::System.Data.DataColumn("customerId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncustomerId);
                 this.columnfirstName = new global::System.Data.DataColumn("firstName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfirstName);
                 this.columnlastName = new global::System.Data.DataColumn("lastName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlastName);
-                this.columnidTrn = new global::System.Data.DataColumn("idTrn", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnidTrn = new global::System.Data.DataColumn("idTrn", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidTrn);
-                this.columnphoneNumber = new global::System.Data.DataColumn("phoneNumber", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnphoneNumber = new global::System.Data.DataColumn("phoneNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnphoneNumber);
                 this.columnemail = new global::System.Data.DataColumn("email", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnemail);
@@ -629,18 +615,20 @@ namespace LoanManagement {
                 base.Columns.Add(this.columnaddress);
                 this.columnemploymentStatus = new global::System.Data.DataColumn("employmentStatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnemploymentStatus);
-                this.columnmontlyIncome = new global::System.Data.DataColumn("montlyIncome", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmontlyIncome);
+                this.columnmonthlyIncome = new global::System.Data.DataColumn("monthlyIncome", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmonthlyIncome);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
-                this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
-                this.columnid.Unique = true;
+                                this.columncustomerId}, true));
+                this.columncustomerId.AutoIncrement = true;
+                this.columncustomerId.AutoIncrementSeed = -1;
+                this.columncustomerId.AutoIncrementStep = -1;
+                this.columncustomerId.AllowDBNull = false;
+                this.columncustomerId.ReadOnly = true;
+                this.columncustomerId.Unique = true;
                 this.columnfirstName.MaxLength = 50;
                 this.columnlastName.MaxLength = 50;
+                this.columnidTrn.MaxLength = 50;
+                this.columnphoneNumber.MaxLength = 50;
                 this.columnemail.MaxLength = 50;
                 this.columnaddress.MaxLength = 255;
                 this.columnemploymentStatus.MaxLength = 50;
@@ -777,11 +765,9 @@ namespace LoanManagement {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class loanDataTable : global::System.Data.TypedTableBase<loanRow> {
             
-            private global::System.Data.DataColumn columnid;
-            
             private global::System.Data.DataColumn columnloanId;
             
-            private global::System.Data.DataColumn columncustomer;
+            private global::System.Data.DataColumn columncustomerId;
             
             private global::System.Data.DataColumn columnloanAmount;
             
@@ -828,14 +814,6 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn loanIdColumn {
                 get {
                     return this.columnloanId;
@@ -844,9 +822,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn customerColumn {
+            public global::System.Data.DataColumn customerIdColumn {
                 get {
-                    return this.columncustomer;
+                    return this.columncustomerId;
                 }
             }
             
@@ -927,12 +905,11 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public loanRow AddloanRow(int loanId, string customer, decimal loanAmount, decimal interestRate, int loanTerm, System.DateTime applicationDate, string status) {
+            public loanRow AddloanRow(int customerId, decimal loanAmount, decimal interestRate, int loanTerm, System.DateTime applicationDate, string status) {
                 loanRow rowloanRow = ((loanRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        loanId,
-                        customer,
+                        customerId,
                         loanAmount,
                         interestRate,
                         loanTerm,
@@ -945,9 +922,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public loanRow FindByid(int id) {
+            public loanRow FindByloanId(int loanId) {
                 return ((loanRow)(this.Rows.Find(new object[] {
-                            id})));
+                            loanId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -967,9 +944,8 @@ namespace LoanManagement {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal void InitVars() {
-                this.columnid = base.Columns["id"];
                 this.columnloanId = base.Columns["loanId"];
-                this.columncustomer = base.Columns["customer"];
+                this.columncustomerId = base.Columns["customerId"];
                 this.columnloanAmount = base.Columns["loanAmount"];
                 this.columninterestRate = base.Columns["interestRate"];
                 this.columnloanTerm = base.Columns["loanTerm"];
@@ -980,12 +956,10 @@ namespace LoanManagement {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
                 this.columnloanId = new global::System.Data.DataColumn("loanId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnloanId);
-                this.columncustomer = new global::System.Data.DataColumn("customer", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncustomer);
+                this.columncustomerId = new global::System.Data.DataColumn("customerId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomerId);
                 this.columnloanAmount = new global::System.Data.DataColumn("loanAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnloanAmount);
                 this.columninterestRate = new global::System.Data.DataColumn("interestRate", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -997,14 +971,13 @@ namespace LoanManagement {
                 this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
-                this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
-                this.columnid.Unique = true;
-                this.columncustomer.MaxLength = 50;
+                                this.columnloanId}, true));
+                this.columnloanId.AutoIncrement = true;
+                this.columnloanId.AutoIncrementSeed = -1;
+                this.columnloanId.AutoIncrementStep = -1;
+                this.columnloanId.AllowDBNull = false;
+                this.columnloanId.ReadOnly = true;
+                this.columnloanId.Unique = true;
                 this.columnstatus.MaxLength = 50;
             }
             
@@ -1139,11 +1112,9 @@ namespace LoanManagement {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class paymentDataTable : global::System.Data.TypedTableBase<paymentRow> {
             
-            private global::System.Data.DataColumn columnid;
-            
             private global::System.Data.DataColumn columnpaymentId;
             
-            private global::System.Data.DataColumn columnloan;
+            private global::System.Data.DataColumn columnloanId;
             
             private global::System.Data.DataColumn columnpaymentDate;
             
@@ -1186,14 +1157,6 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public global::System.Data.DataColumn paymentIdColumn {
                 get {
                     return this.columnpaymentId;
@@ -1202,9 +1165,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn loanColumn {
+            public global::System.Data.DataColumn loanIdColumn {
                 get {
-                    return this.columnloan;
+                    return this.columnloanId;
                 }
             }
             
@@ -1269,12 +1232,11 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public paymentRow AddpaymentRow(int paymentId, string loan, System.DateTime paymentDate, decimal amountPaid, decimal remainingBalance) {
+            public paymentRow AddpaymentRow(int loanId, System.DateTime paymentDate, decimal amountPaid, decimal remainingBalance) {
                 paymentRow rowpaymentRow = ((paymentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        paymentId,
-                        loan,
+                        loanId,
                         paymentDate,
                         amountPaid,
                         remainingBalance};
@@ -1285,9 +1247,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public paymentRow FindByid(int id) {
+            public paymentRow FindBypaymentId(int paymentId) {
                 return ((paymentRow)(this.Rows.Find(new object[] {
-                            id})));
+                            paymentId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1307,9 +1269,8 @@ namespace LoanManagement {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal void InitVars() {
-                this.columnid = base.Columns["id"];
                 this.columnpaymentId = base.Columns["paymentId"];
-                this.columnloan = base.Columns["loan"];
+                this.columnloanId = base.Columns["loanId"];
                 this.columnpaymentDate = base.Columns["paymentDate"];
                 this.columnamountPaid = base.Columns["amountPaid"];
                 this.columnremainingBalance = base.Columns["remainingBalance"];
@@ -1318,12 +1279,10 @@ namespace LoanManagement {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
                 this.columnpaymentId = new global::System.Data.DataColumn("paymentId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpaymentId);
-                this.columnloan = new global::System.Data.DataColumn("loan", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnloan);
+                this.columnloanId = new global::System.Data.DataColumn("loanId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnloanId);
                 this.columnpaymentDate = new global::System.Data.DataColumn("paymentDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpaymentDate);
                 this.columnamountPaid = new global::System.Data.DataColumn("amountPaid", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -1331,14 +1290,13 @@ namespace LoanManagement {
                 this.columnremainingBalance = new global::System.Data.DataColumn("remainingBalance", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnremainingBalance);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
-                this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
-                this.columnid.Unique = true;
-                this.columnloan.MaxLength = 50;
+                                this.columnpaymentId}, true));
+                this.columnpaymentId.AutoIncrement = true;
+                this.columnpaymentId.AutoIncrementSeed = -1;
+                this.columnpaymentId.AutoIncrementStep = -1;
+                this.columnpaymentId.AllowDBNull = false;
+                this.columnpaymentId.ReadOnly = true;
+                this.columnpaymentId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1788,25 +1746,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int id {
-                get {
-                    return ((int)(this[this.tablecustomers.idColumn]));
-                }
-                set {
-                    this[this.tablecustomers.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int customerId {
                 get {
-                    try {
-                        return ((int)(this[this.tablecustomers.customerIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'customerId\' in table \'customers\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tablecustomers.customerIdColumn]));
                 }
                 set {
                     this[this.tablecustomers.customerIdColumn] = value;
@@ -1847,10 +1789,10 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int idTrn {
+            public string idTrn {
                 get {
                     try {
-                        return ((int)(this[this.tablecustomers.idTrnColumn]));
+                        return ((string)(this[this.tablecustomers.idTrnColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'idTrn\' in table \'customers\' is DBNull.", e);
@@ -1863,10 +1805,10 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int phoneNumber {
+            public string phoneNumber {
                 get {
                     try {
-                        return ((int)(this[this.tablecustomers.phoneNumberColumn]));
+                        return ((string)(this[this.tablecustomers.phoneNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'phoneNumber\' in table \'customers\' is DBNull.", e);
@@ -1927,30 +1869,18 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public double montlyIncome {
+            public decimal monthlyIncome {
                 get {
                     try {
-                        return ((double)(this[this.tablecustomers.montlyIncomeColumn]));
+                        return ((decimal)(this[this.tablecustomers.monthlyIncomeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'montlyIncome\' in table \'customers\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'monthlyIncome\' in table \'customers\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablecustomers.montlyIncomeColumn] = value;
+                    this[this.tablecustomers.monthlyIncomeColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IscustomerIdNull() {
-                return this.IsNull(this.tablecustomers.customerIdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetcustomerIdNull() {
-                this[this.tablecustomers.customerIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2039,14 +1969,14 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IsmontlyIncomeNull() {
-                return this.IsNull(this.tablecustomers.montlyIncomeColumn);
+            public bool IsmonthlyIncomeNull() {
+                return this.IsNull(this.tablecustomers.monthlyIncomeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetmontlyIncomeNull() {
-                this[this.tablecustomers.montlyIncomeColumn] = global::System.Convert.DBNull;
+            public void SetmonthlyIncomeNull() {
+                this[this.tablecustomers.monthlyIncomeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2066,25 +1996,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int id {
-                get {
-                    return ((int)(this[this.tableloan.idColumn]));
-                }
-                set {
-                    this[this.tableloan.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int loanId {
                 get {
-                    try {
-                        return ((int)(this[this.tableloan.loanIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'loanId\' in table \'loan\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableloan.loanIdColumn]));
                 }
                 set {
                     this[this.tableloan.loanIdColumn] = value;
@@ -2093,17 +2007,17 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string customer {
+            public int customerId {
                 get {
                     try {
-                        return ((string)(this[this.tableloan.customerColumn]));
+                        return ((int)(this[this.tableloan.customerIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'customer\' in table \'loan\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'customerId\' in table \'loan\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableloan.customerColumn] = value;
+                    this[this.tableloan.customerIdColumn] = value;
                 }
             }
             
@@ -2189,26 +2103,14 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IsloanIdNull() {
-                return this.IsNull(this.tableloan.loanIdColumn);
+            public bool IscustomerIdNull() {
+                return this.IsNull(this.tableloan.customerIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetloanIdNull() {
-                this[this.tableloan.loanIdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IscustomerNull() {
-                return this.IsNull(this.tableloan.customerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetcustomerNull() {
-                this[this.tableloan.customerColumn] = global::System.Convert.DBNull;
+            public void SetcustomerIdNull() {
+                this[this.tableloan.customerIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2288,25 +2190,9 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int id {
-                get {
-                    return ((int)(this[this.tablepayment.idColumn]));
-                }
-                set {
-                    this[this.tablepayment.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int paymentId {
                 get {
-                    try {
-                        return ((int)(this[this.tablepayment.paymentIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'paymentId\' in table \'payment\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tablepayment.paymentIdColumn]));
                 }
                 set {
                     this[this.tablepayment.paymentIdColumn] = value;
@@ -2315,17 +2201,17 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string loan {
+            public int loanId {
                 get {
                     try {
-                        return ((string)(this[this.tablepayment.loanColumn]));
+                        return ((int)(this[this.tablepayment.loanIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'loan\' in table \'payment\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'loanId\' in table \'payment\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablepayment.loanColumn] = value;
+                    this[this.tablepayment.loanIdColumn] = value;
                 }
             }
             
@@ -2379,26 +2265,14 @@ namespace LoanManagement {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IspaymentIdNull() {
-                return this.IsNull(this.tablepayment.paymentIdColumn);
+            public bool IsloanIdNull() {
+                return this.IsNull(this.tablepayment.loanIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetpaymentIdNull() {
-                this[this.tablepayment.paymentIdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IsloanNull() {
-                return this.IsNull(this.tablepayment.loanColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetloanNull() {
-                this[this.tablepayment.loanColumn] = global::System.Convert.DBNull;
+            public void SetloanIdNull() {
+                this[this.tablepayment.loanIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2809,7 +2683,6 @@ namespace LoanManagement.LoanManagementSystemDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "customers";
-            tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("customerId", "customerId");
             tableMapping.ColumnMappings.Add("firstName", "firstName");
             tableMapping.ColumnMappings.Add("lastName", "lastName");
@@ -2818,79 +2691,73 @@ namespace LoanManagement.LoanManagementSystemDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("email", "email");
             tableMapping.ColumnMappings.Add("address", "address");
             tableMapping.ColumnMappings.Add("employmentStatus", "employmentStatus");
-            tableMapping.ColumnMappings.Add("montlyIncome", "montlyIncome");
+            tableMapping.ColumnMappings.Add("monthlyIncome", "monthlyIncome");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[customers] WHERE (([id] = @Original_id) AND ((@IsNull_customerId = 1 AND [customerId] IS NULL) OR ([customerId] = @Original_customerId)) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_idTrn = 1 AND [idTrn] IS NULL) OR ([idTrn] = @Original_idTrn)) AND ((@IsNull_phoneNumber = 1 AND [phoneNumber] IS NULL) OR ([phoneNumber] = @Original_phoneNumber)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ((@IsNull_address = 1 AND [address] IS NULL) OR ([address] = @Original_address)) AND ((@IsNull_employmentStatus = 1 AND [employmentStatus] IS NULL) OR ([employmentStatus] = @Original_employmentStatus)) AND ((@IsNull_montlyIncome = 1 AND [montlyIncome] IS NULL) OR ([montlyIncome] = @Original_montlyIncome)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[customers] WHERE (([customerId] = @Original_customerId) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_idTrn = 1 AND [idTrn] IS NULL) OR ([idTrn] = @Original_idTrn)) AND ((@IsNull_phoneNumber = 1 AND [phoneNumber] IS NULL) OR ([phoneNumber] = @Original_phoneNumber)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ((@IsNull_address = 1 AND [address] IS NULL) OR ([address] = @Original_address)) AND ((@IsNull_employmentStatus = 1 AND [employmentStatus] IS NULL) OR ([employmentStatus] = @Original_employmentStatus)) AND ((@IsNull_monthlyIncome = 1 AND [monthlyIncome] IS NULL) OR ([monthlyIncome] = @Original_monthlyIncome)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_firstName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_lastName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_idTrn", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idTrn", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idTrn", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_phoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_phoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_phoneNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_email", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_address", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "address", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "address", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_employmentStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "employmentStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_employmentStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "employmentStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_montlyIncome", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "montlyIncome", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_montlyIncome", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "montlyIncome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_monthlyIncome", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "monthlyIncome", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_monthlyIncome", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "monthlyIncome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[customers] ([customerId], [firstName], [lastName], [idTrn], [phoneNumber], [email], [address], [employmentStatus], [montlyIncome]) VALUES (@customerId, @firstName, @lastName, @idTrn, @phoneNumber, @email, @address, @employmentStatus, @montlyIncome);
-SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, employmentStatus, montlyIncome FROM customers WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[customers] ([firstName], [lastName], [idTrn], [phoneNumber], [email], [address], [employmentStatus], [monthlyIncome]) VALUES (@firstName, @lastName, @idTrn, @phoneNumber, @email, @address, @employmentStatus, @monthlyIncome);
+SELECT customerId, firstName, lastName, idTrn, phoneNumber, email, address, employmentStatus, monthlyIncome FROM customers WHERE (customerId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idTrn", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idTrn", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phoneNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@employmentStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "employmentStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@montlyIncome", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "montlyIncome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@monthlyIncome", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "monthlyIncome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[customers] SET [customerId] = @customerId, [firstName] = @firstName, [lastName] = @lastName, [idTrn] = @idTrn, [phoneNumber] = @phoneNumber, [email] = @email, [address] = @address, [employmentStatus] = @employmentStatus, [montlyIncome] = @montlyIncome WHERE (([id] = @Original_id) AND ((@IsNull_customerId = 1 AND [customerId] IS NULL) OR ([customerId] = @Original_customerId)) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_idTrn = 1 AND [idTrn] IS NULL) OR ([idTrn] = @Original_idTrn)) AND ((@IsNull_phoneNumber = 1 AND [phoneNumber] IS NULL) OR ([phoneNumber] = @Original_phoneNumber)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ((@IsNull_address = 1 AND [address] IS NULL) OR ([address] = @Original_address)) AND ((@IsNull_employmentStatus = 1 AND [employmentStatus] IS NULL) OR ([employmentStatus] = @Original_employmentStatus)) AND ((@IsNull_montlyIncome = 1 AND [montlyIncome] IS NULL) OR ([montlyIncome] = @Original_montlyIncome)));
-SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, employmentStatus, montlyIncome FROM customers WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[customers] SET [firstName] = @firstName, [lastName] = @lastName, [idTrn] = @idTrn, [phoneNumber] = @phoneNumber, [email] = @email, [address] = @address, [employmentStatus] = @employmentStatus, [monthlyIncome] = @monthlyIncome WHERE (([customerId] = @Original_customerId) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_idTrn = 1 AND [idTrn] IS NULL) OR ([idTrn] = @Original_idTrn)) AND ((@IsNull_phoneNumber = 1 AND [phoneNumber] IS NULL) OR ([phoneNumber] = @Original_phoneNumber)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ((@IsNull_address = 1 AND [address] IS NULL) OR ([address] = @Original_address)) AND ((@IsNull_employmentStatus = 1 AND [employmentStatus] IS NULL) OR ([employmentStatus] = @Original_employmentStatus)) AND ((@IsNull_monthlyIncome = 1 AND [monthlyIncome] IS NULL) OR ([monthlyIncome] = @Original_monthlyIncome)));
+SELECT customerId, firstName, lastName, idTrn, phoneNumber, email, address, employmentStatus, monthlyIncome FROM customers WHERE (customerId = @customerId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idTrn", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idTrn", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phoneNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@employmentStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "employmentStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@montlyIncome", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "montlyIncome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@monthlyIncome", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "monthlyIncome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_firstName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_lastName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_idTrn", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idTrn", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idTrn", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idTrn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_phoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_phoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_phoneNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_email", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_address", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "address", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "address", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_employmentStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "employmentStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_employmentStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "employmentStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_montlyIncome", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "montlyIncome", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_montlyIncome", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "montlyIncome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_monthlyIncome", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "monthlyIncome", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_monthlyIncome", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "monthlyIncome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2906,8 +2773,8 @@ SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, e" +
-                "mploymentStatus, montlyIncome FROM dbo.customers";
+            this._commandCollection[0].CommandText = "SELECT customerId, firstName, lastName, idTrn, phoneNumber, email, address, emplo" +
+                "ymentStatus, monthlyIncome FROM dbo.customers";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2968,79 +2835,71 @@ SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, global::System.Nullable<int> Original_customerId, string Original_firstName, string Original_lastName, global::System.Nullable<int> Original_idTrn, global::System.Nullable<int> Original_phoneNumber, string Original_email, string Original_address, string Original_employmentStatus, global::System.Nullable<double> Original_montlyIncome) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
-            if ((Original_customerId.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_customerId.Value));
-            }
-            else {
+        public virtual int Delete(int Original_customerId, string Original_firstName, string Original_lastName, string Original_idTrn, string Original_phoneNumber, string Original_email, string Original_address, string Original_employmentStatus, global::System.Nullable<decimal> Original_monthlyIncome) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_customerId));
+            if ((Original_firstName == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_firstName == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_firstName));
+            }
+            if ((Original_lastName == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_firstName));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_lastName));
             }
-            if ((Original_lastName == null)) {
+            if ((Original_idTrn == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_lastName));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_idTrn));
             }
-            if ((Original_idTrn.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_idTrn.Value));
-            }
-            else {
+            if ((Original_phoneNumber == null)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_phoneNumber.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_phoneNumber.Value));
-            }
             else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_phoneNumber));
+            }
+            if ((Original_email == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_email == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_email));
+            }
+            if ((Original_address == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_email));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_address));
             }
-            if ((Original_address == null)) {
+            if ((Original_employmentStatus == null)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_address));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_employmentStatus));
             }
-            if ((Original_employmentStatus == null)) {
+            if ((Original_monthlyIncome.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_monthlyIncome.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_employmentStatus));
-            }
-            if ((Original_montlyIncome.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((double)(Original_montlyIncome.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3062,60 +2921,54 @@ SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> customerId, string firstName, string lastName, global::System.Nullable<int> idTrn, global::System.Nullable<int> phoneNumber, string email, string address, string employmentStatus, global::System.Nullable<double> montlyIncome) {
-            if ((customerId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(customerId.Value));
-            }
-            else {
+        public virtual int Insert(string firstName, string lastName, string idTrn, string phoneNumber, string email, string address, string employmentStatus, global::System.Nullable<decimal> monthlyIncome) {
+            if ((firstName == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((firstName == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(firstName));
+            }
+            if ((lastName == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(firstName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(lastName));
             }
-            if ((lastName == null)) {
+            if ((idTrn == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(lastName));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(idTrn));
             }
-            if ((idTrn.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(idTrn.Value));
-            }
-            else {
+            if ((phoneNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((phoneNumber.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(phoneNumber.Value));
-            }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(phoneNumber));
             }
             if ((email == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(email));
+            }
+            if ((address == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(email));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(address));
             }
-            if ((address == null)) {
+            if ((employmentStatus == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(address));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(employmentStatus));
             }
-            if ((employmentStatus == null)) {
+            if ((monthlyIncome.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(monthlyIncome.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(employmentStatus));
-            }
-            if ((montlyIncome.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((double)(montlyIncome.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3138,154 +2991,138 @@ SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, 
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    global::System.Nullable<int> customerId, 
                     string firstName, 
                     string lastName, 
-                    global::System.Nullable<int> idTrn, 
-                    global::System.Nullable<int> phoneNumber, 
+                    string idTrn, 
+                    string phoneNumber, 
                     string email, 
                     string address, 
                     string employmentStatus, 
-                    global::System.Nullable<double> montlyIncome, 
-                    int Original_id, 
-                    global::System.Nullable<int> Original_customerId, 
+                    global::System.Nullable<decimal> monthlyIncome, 
+                    int Original_customerId, 
                     string Original_firstName, 
                     string Original_lastName, 
-                    global::System.Nullable<int> Original_idTrn, 
-                    global::System.Nullable<int> Original_phoneNumber, 
+                    string Original_idTrn, 
+                    string Original_phoneNumber, 
                     string Original_email, 
                     string Original_address, 
                     string Original_employmentStatus, 
-                    global::System.Nullable<double> Original_montlyIncome, 
-                    int id) {
-            if ((customerId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(customerId.Value));
-            }
-            else {
+                    global::System.Nullable<decimal> Original_monthlyIncome, 
+                    int customerId) {
+            if ((firstName == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((firstName == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(firstName));
+            }
+            if ((lastName == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(firstName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(lastName));
             }
-            if ((lastName == null)) {
+            if ((idTrn == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(lastName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(idTrn));
             }
-            if ((idTrn.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(idTrn.Value));
-            }
-            else {
+            if ((phoneNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((phoneNumber.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(phoneNumber.Value));
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(phoneNumber));
             }
             if ((email == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(email));
+            }
+            if ((address == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(email));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(address));
             }
-            if ((address == null)) {
+            if ((employmentStatus == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(address));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(employmentStatus));
             }
-            if ((employmentStatus == null)) {
+            if ((monthlyIncome.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(monthlyIncome.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(employmentStatus));
-            }
-            if ((montlyIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(montlyIncome.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_id));
-            if ((Original_customerId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_customerId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_customerId));
             if ((Original_firstName == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_firstName));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_firstName));
             }
             if ((Original_lastName == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_lastName));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_lastName));
             }
-            if ((Original_idTrn.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_idTrn.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            if ((Original_phoneNumber.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_phoneNumber.Value));
+            if ((Original_idTrn == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_idTrn));
+            }
+            if ((Original_phoneNumber == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_phoneNumber));
             }
             if ((Original_email == null)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_email));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_email));
             }
             if ((Original_address == null)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_address));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_address));
             }
             if ((Original_employmentStatus == null)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_employmentStatus));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_employmentStatus));
             }
-            if ((Original_montlyIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((double)(Original_montlyIncome.Value));
+            if ((Original_monthlyIncome.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(Original_monthlyIncome.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(customerId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3307,26 +3144,24 @@ SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, 
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    global::System.Nullable<int> customerId, 
                     string firstName, 
                     string lastName, 
-                    global::System.Nullable<int> idTrn, 
-                    global::System.Nullable<int> phoneNumber, 
+                    string idTrn, 
+                    string phoneNumber, 
                     string email, 
                     string address, 
                     string employmentStatus, 
-                    global::System.Nullable<double> montlyIncome, 
-                    int Original_id, 
-                    global::System.Nullable<int> Original_customerId, 
+                    global::System.Nullable<decimal> monthlyIncome, 
+                    int Original_customerId, 
                     string Original_firstName, 
                     string Original_lastName, 
-                    global::System.Nullable<int> Original_idTrn, 
-                    global::System.Nullable<int> Original_phoneNumber, 
+                    string Original_idTrn, 
+                    string Original_phoneNumber, 
                     string Original_email, 
                     string Original_address, 
                     string Original_employmentStatus, 
-                    global::System.Nullable<double> Original_montlyIncome) {
-            return this.Update(customerId, firstName, lastName, idTrn, phoneNumber, email, address, employmentStatus, montlyIncome, Original_id, Original_customerId, Original_firstName, Original_lastName, Original_idTrn, Original_phoneNumber, Original_email, Original_address, Original_employmentStatus, Original_montlyIncome, Original_id);
+                    global::System.Nullable<decimal> Original_monthlyIncome) {
+            return this.Update(firstName, lastName, idTrn, phoneNumber, email, address, employmentStatus, monthlyIncome, Original_customerId, Original_firstName, Original_lastName, Original_idTrn, Original_phoneNumber, Original_email, Original_address, Original_employmentStatus, Original_monthlyIncome, Original_customerId);
         }
     }
     
@@ -3451,9 +3286,8 @@ SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, 
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "loan";
-            tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("loanId", "loanId");
-            tableMapping.ColumnMappings.Add("customer", "customer");
+            tableMapping.ColumnMappings.Add("customerId", "customerId");
             tableMapping.ColumnMappings.Add("loanAmount", "loanAmount");
             tableMapping.ColumnMappings.Add("interestRate", "interestRate");
             tableMapping.ColumnMappings.Add("loanTerm", "loanTerm");
@@ -3462,63 +3296,57 @@ SELECT id, customerId, firstName, lastName, idTrn, phoneNumber, email, address, 
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[loan] WHERE (([id] = @Original_id) AND ((@IsNull_loanId = 1 AND [loanId] IS NULL) OR ([loanId] = @Original_loanId)) AND ((@IsNull_customer = 1 AND [customer] IS NULL) OR ([customer] = @Original_customer)) AND ((@IsNull_loanAmount = 1 AND [loanAmount] IS NULL) OR ([loanAmount] = @Original_loanAmount)) AND ((@IsNull_interestRate = 1 AND [interestRate] IS NULL) OR ([interestRate] = @Original_interestRate)) AND ((@IsNull_loanTerm = 1 AND [loanTerm] IS NULL) OR ([loanTerm] = @Original_loanTerm)) AND ((@IsNull_applicationDate = 1 AND [applicationDate] IS NULL) OR ([applicationDate] = @Original_applicationDate)) AND ((@IsNull_status = 1 AND [status] IS NULL) OR ([status] = @Original_status)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[loan] WHERE (([loanId] = @Original_loanId) AND ((@IsNull_customerId = 1 AND [customerId] IS NULL) OR ([customerId] = @Original_customerId)) AND ((@IsNull_loanAmount = 1 AND [loanAmount] IS NULL) OR ([loanAmount] = @Original_loanAmount)) AND ((@IsNull_interestRate = 1 AND [interestRate] IS NULL) OR ([interestRate] = @Original_interestRate)) AND ((@IsNull_loanTerm = 1 AND [loanTerm] IS NULL) OR ([loanTerm] = @Original_loanTerm)) AND ((@IsNull_applicationDate = 1 AND [applicationDate] IS NULL) OR ([applicationDate] = @Original_applicationDate)) AND ((@IsNull_status = 1 AND [status] IS NULL) OR ([status] = @Original_status)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_customer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_customer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanAmount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanAmount", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "loanAmount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "loanAmount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_interestRate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "interestRate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "interestRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "interestRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanTerm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanTerm", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanTerm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanTerm", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_applicationDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "applicationDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_applicationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "applicationDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_status", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[loan] ([loanId], [customer], [loanAmount], [interestRate], [loanTerm], [applicationDate], [status]) VALUES (@loanId, @customer, @loanAmount, @interestRate, @loanTerm, @applicationDate, @status);
-SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate, status FROM loan WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[loan] ([customerId], [loanAmount], [interestRate], [loanTerm], [applicationDate], [status]) VALUES (@customerId, @loanAmount, @interestRate, @loanTerm, @applicationDate, @status);
+SELECT loanId, customerId, loanAmount, interestRate, loanTerm, applicationDate, status FROM loan WHERE (loanId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "loanAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "interestRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "loanAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "interestRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanTerm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanTerm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@applicationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "applicationDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[loan] SET [loanId] = @loanId, [customer] = @customer, [loanAmount] = @loanAmount, [interestRate] = @interestRate, [loanTerm] = @loanTerm, [applicationDate] = @applicationDate, [status] = @status WHERE (([id] = @Original_id) AND ((@IsNull_loanId = 1 AND [loanId] IS NULL) OR ([loanId] = @Original_loanId)) AND ((@IsNull_customer = 1 AND [customer] IS NULL) OR ([customer] = @Original_customer)) AND ((@IsNull_loanAmount = 1 AND [loanAmount] IS NULL) OR ([loanAmount] = @Original_loanAmount)) AND ((@IsNull_interestRate = 1 AND [interestRate] IS NULL) OR ([interestRate] = @Original_interestRate)) AND ((@IsNull_loanTerm = 1 AND [loanTerm] IS NULL) OR ([loanTerm] = @Original_loanTerm)) AND ((@IsNull_applicationDate = 1 AND [applicationDate] IS NULL) OR ([applicationDate] = @Original_applicationDate)) AND ((@IsNull_status = 1 AND [status] IS NULL) OR ([status] = @Original_status)));
-SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate, status FROM loan WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[loan] SET [customerId] = @customerId, [loanAmount] = @loanAmount, [interestRate] = @interestRate, [loanTerm] = @loanTerm, [applicationDate] = @applicationDate, [status] = @status WHERE (([loanId] = @Original_loanId) AND ((@IsNull_customerId = 1 AND [customerId] IS NULL) OR ([customerId] = @Original_customerId)) AND ((@IsNull_loanAmount = 1 AND [loanAmount] IS NULL) OR ([loanAmount] = @Original_loanAmount)) AND ((@IsNull_interestRate = 1 AND [interestRate] IS NULL) OR ([interestRate] = @Original_interestRate)) AND ((@IsNull_loanTerm = 1 AND [loanTerm] IS NULL) OR ([loanTerm] = @Original_loanTerm)) AND ((@IsNull_applicationDate = 1 AND [applicationDate] IS NULL) OR ([applicationDate] = @Original_applicationDate)) AND ((@IsNull_status = 1 AND [status] IS NULL) OR ([status] = @Original_status)));
+SELECT loanId, customerId, loanAmount, interestRate, loanTerm, applicationDate, status FROM loan WHERE (loanId = @loanId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "loanAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "interestRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "loanAmount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "interestRate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanTerm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanTerm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@applicationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "applicationDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_customer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_customer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_customerId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "customerId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanAmount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanAmount", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "loanAmount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanAmount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "loanAmount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_interestRate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "interestRate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "interestRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_interestRate", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "interestRate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanTerm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanTerm", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanTerm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanTerm", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_applicationDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "applicationDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_applicationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "applicationDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_status", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3534,8 +3362,8 @@ SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate," +
-                " status FROM dbo.loan";
+            this._commandCollection[0].CommandText = "SELECT loanId, customerId, loanAmount, interestRate, loanTerm, applicationDate, s" +
+                "tatus FROM dbo.loan";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3596,63 +3424,55 @@ SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, global::System.Nullable<int> Original_loanId, string Original_customer, global::System.Nullable<decimal> Original_loanAmount, global::System.Nullable<decimal> Original_interestRate, global::System.Nullable<int> Original_loanTerm, global::System.Nullable<global::System.DateTime> Original_applicationDate, string Original_status) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
-            if ((Original_loanId.HasValue == true)) {
+        public virtual int Delete(int Original_loanId, global::System.Nullable<int> Original_customerId, global::System.Nullable<decimal> Original_loanAmount, global::System.Nullable<decimal> Original_interestRate, global::System.Nullable<int> Original_loanTerm, global::System.Nullable<global::System.DateTime> Original_applicationDate, string Original_status) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_loanId));
+            if ((Original_customerId.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_loanId.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_customerId.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_customer == null)) {
+            if ((Original_loanAmount.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_loanAmount.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_customer));
-            }
-            if ((Original_loanAmount.HasValue == true)) {
+            if ((Original_interestRate.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_loanAmount.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_interestRate.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_interestRate.HasValue == true)) {
+            if ((Original_loanTerm.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_interestRate.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_loanTerm.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_loanTerm.HasValue == true)) {
+            if ((Original_applicationDate.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_loanTerm.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_applicationDate.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_applicationDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((System.DateTime)(Original_applicationDate.Value));
-            }
-            else {
+            if ((Original_status == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Original_status == null)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_status));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_status));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3674,48 +3494,42 @@ SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> loanId, string customer, global::System.Nullable<decimal> loanAmount, global::System.Nullable<decimal> interestRate, global::System.Nullable<int> loanTerm, global::System.Nullable<global::System.DateTime> applicationDate, string status) {
-            if ((loanId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(loanId.Value));
+        public virtual int Insert(global::System.Nullable<int> customerId, global::System.Nullable<decimal> loanAmount, global::System.Nullable<decimal> interestRate, global::System.Nullable<int> loanTerm, global::System.Nullable<global::System.DateTime> applicationDate, string status) {
+            if ((customerId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(customerId.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((customer == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((loanAmount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(loanAmount.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(customer));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((loanAmount.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(loanAmount.Value));
+            if ((interestRate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(interestRate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((interestRate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(interestRate.Value));
+            if ((loanTerm.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(loanTerm.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((loanTerm.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(loanTerm.Value));
+            if ((applicationDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(applicationDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((applicationDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(applicationDate.Value));
-            }
-            else {
+            if ((status == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((status == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(status));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(status));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3737,123 +3551,93 @@ SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    global::System.Nullable<int> loanId, 
-                    string customer, 
-                    global::System.Nullable<decimal> loanAmount, 
-                    global::System.Nullable<decimal> interestRate, 
-                    global::System.Nullable<int> loanTerm, 
-                    global::System.Nullable<global::System.DateTime> applicationDate, 
-                    string status, 
-                    int Original_id, 
-                    global::System.Nullable<int> Original_loanId, 
-                    string Original_customer, 
-                    global::System.Nullable<decimal> Original_loanAmount, 
-                    global::System.Nullable<decimal> Original_interestRate, 
-                    global::System.Nullable<int> Original_loanTerm, 
-                    global::System.Nullable<global::System.DateTime> Original_applicationDate, 
-                    string Original_status, 
-                    int id) {
-            if ((loanId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(loanId.Value));
+        public virtual int Update(global::System.Nullable<int> customerId, global::System.Nullable<decimal> loanAmount, global::System.Nullable<decimal> interestRate, global::System.Nullable<int> loanTerm, global::System.Nullable<global::System.DateTime> applicationDate, string status, int Original_loanId, global::System.Nullable<int> Original_customerId, global::System.Nullable<decimal> Original_loanAmount, global::System.Nullable<decimal> Original_interestRate, global::System.Nullable<int> Original_loanTerm, global::System.Nullable<global::System.DateTime> Original_applicationDate, string Original_status, int loanId) {
+            if ((customerId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(customerId.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((customer == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((loanAmount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(loanAmount.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(customer));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((loanAmount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(loanAmount.Value));
+            if ((interestRate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(interestRate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((interestRate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(interestRate.Value));
+            if ((loanTerm.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(loanTerm.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((loanTerm.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(loanTerm.Value));
+            if ((applicationDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(applicationDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((applicationDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(applicationDate.Value));
-            }
-            else {
+            if ((status == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((status == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(status));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_loanId));
+            if ((Original_customerId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_customerId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(status));
-            }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_id));
-            if ((Original_loanId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_loanId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((Original_customer == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_customer));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((Original_loanAmount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_loanAmount.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Original_loanAmount.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_interestRate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(Original_interestRate.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_interestRate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_loanTerm.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_loanTerm.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_loanTerm.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_applicationDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_applicationDate.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_applicationDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_status == null)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_status));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_status));
             }
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(loanId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3874,8 +3658,8 @@ SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> loanId, string customer, global::System.Nullable<decimal> loanAmount, global::System.Nullable<decimal> interestRate, global::System.Nullable<int> loanTerm, global::System.Nullable<global::System.DateTime> applicationDate, string status, int Original_id, global::System.Nullable<int> Original_loanId, string Original_customer, global::System.Nullable<decimal> Original_loanAmount, global::System.Nullable<decimal> Original_interestRate, global::System.Nullable<int> Original_loanTerm, global::System.Nullable<global::System.DateTime> Original_applicationDate, string Original_status) {
-            return this.Update(loanId, customer, loanAmount, interestRate, loanTerm, applicationDate, status, Original_id, Original_loanId, Original_customer, Original_loanAmount, Original_interestRate, Original_loanTerm, Original_applicationDate, Original_status, Original_id);
+        public virtual int Update(global::System.Nullable<int> customerId, global::System.Nullable<decimal> loanAmount, global::System.Nullable<decimal> interestRate, global::System.Nullable<int> loanTerm, global::System.Nullable<global::System.DateTime> applicationDate, string status, int Original_loanId, global::System.Nullable<int> Original_customerId, global::System.Nullable<decimal> Original_loanAmount, global::System.Nullable<decimal> Original_interestRate, global::System.Nullable<int> Original_loanTerm, global::System.Nullable<global::System.DateTime> Original_applicationDate, string Original_status) {
+            return this.Update(customerId, loanAmount, interestRate, loanTerm, applicationDate, status, Original_loanId, Original_customerId, Original_loanAmount, Original_interestRate, Original_loanTerm, Original_applicationDate, Original_status, Original_loanId);
         }
     }
     
@@ -4000,60 +3784,53 @@ SELECT id, loanId, customer, loanAmount, interestRate, loanTerm, applicationDate
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "payment";
-            tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("paymentId", "paymentId");
-            tableMapping.ColumnMappings.Add("loan", "loan");
+            tableMapping.ColumnMappings.Add("loanId", "loanId");
             tableMapping.ColumnMappings.Add("paymentDate", "paymentDate");
             tableMapping.ColumnMappings.Add("amountPaid", "amountPaid");
             tableMapping.ColumnMappings.Add("remainingBalance", "remainingBalance");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[payment] WHERE (([id] = @Original_id) AND ((@IsNull_paymentId = 1 AND [paymentId] IS NULL) OR ([paymentId] = @Original_paymentId)) AND ((@IsNull_loan = 1 AND [loan] IS NULL) OR ([loan] = @Original_loan)) AND ((@IsNull_paymentDate = 1 AND [paymentDate] IS NULL) OR ([paymentDate] = @Original_paymentDate)) AND ((@IsNull_amountPaid = 1 AND [amountPaid] IS NULL) OR ([amountPaid] = @Original_amountPaid)) AND ((@IsNull_remainingBalance = 1 AND [remainingBalance] IS NULL) OR ([remainingBalance] = @Original_remainingBalance)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[payment] WHERE (([paymentId] = @Original_paymentId) AND ((@IsNull_loanId = 1 AND [loanId] IS NULL) OR ([loanId] = @Original_loanId)) AND ((@IsNull_paymentDate = 1 AND [paymentDate] IS NULL) OR ([paymentDate] = @Original_paymentDate)) AND ((@IsNull_amountPaid = 1 AND [amountPaid] IS NULL) OR ([amountPaid] = @Original_amountPaid)) AND ((@IsNull_remainingBalance = 1 AND [remainingBalance] IS NULL) OR ([remainingBalance] = @Original_remainingBalance)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_paymentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_paymentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loan", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loan", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loan", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loan", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_paymentDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_paymentDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_amountPaid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "amountPaid", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "amountPaid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "amountPaid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_remainingBalance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "remainingBalance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "remainingBalance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "remainingBalance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[payment] ([paymentId], [loan], [paymentDate], [amountPaid], [remainingBalance]) VALUES (@paymentId, @loan, @paymentDate, @amountPaid, @remainingBalance);
-SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM payment WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[payment] ([loanId], [paymentDate], [amountPaid], [remainingBalance]) VALUES (@loanId, @paymentDate, @amountPaid, @remainingBalance);
+SELECT paymentId, loanId, paymentDate, amountPaid, remainingBalance FROM payment WHERE (paymentId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paymentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loan", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paymentDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "amountPaid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "remainingBalance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "amountPaid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "remainingBalance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[payment] SET [paymentId] = @paymentId, [loan] = @loan, [paymentDate] = @paymentDate, [amountPaid] = @amountPaid, [remainingBalance] = @remainingBalance WHERE (([id] = @Original_id) AND ((@IsNull_paymentId = 1 AND [paymentId] IS NULL) OR ([paymentId] = @Original_paymentId)) AND ((@IsNull_loan = 1 AND [loan] IS NULL) OR ([loan] = @Original_loan)) AND ((@IsNull_paymentDate = 1 AND [paymentDate] IS NULL) OR ([paymentDate] = @Original_paymentDate)) AND ((@IsNull_amountPaid = 1 AND [amountPaid] IS NULL) OR ([amountPaid] = @Original_amountPaid)) AND ((@IsNull_remainingBalance = 1 AND [remainingBalance] IS NULL) OR ([remainingBalance] = @Original_remainingBalance)));
-SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM payment WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[payment] SET [loanId] = @loanId, [paymentDate] = @paymentDate, [amountPaid] = @amountPaid, [remainingBalance] = @remainingBalance WHERE (([paymentId] = @Original_paymentId) AND ((@IsNull_loanId = 1 AND [loanId] IS NULL) OR ([loanId] = @Original_loanId)) AND ((@IsNull_paymentDate = 1 AND [paymentDate] IS NULL) OR ([paymentDate] = @Original_paymentDate)) AND ((@IsNull_amountPaid = 1 AND [amountPaid] IS NULL) OR ([amountPaid] = @Original_amountPaid)) AND ((@IsNull_remainingBalance = 1 AND [remainingBalance] IS NULL) OR ([remainingBalance] = @Original_remainingBalance)));
+SELECT paymentId, loanId, paymentDate, amountPaid, remainingBalance FROM payment WHERE (paymentId = @paymentId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paymentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loan", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paymentDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "amountPaid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "remainingBalance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_paymentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "amountPaid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "remainingBalance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_paymentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loan", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loan", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loan", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loan", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_loanId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "loanId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_paymentDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_paymentDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "paymentDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_amountPaid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "amountPaid", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "amountPaid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_amountPaid", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "amountPaid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_remainingBalance", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "remainingBalance", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "remainingBalance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_remainingBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "remainingBalance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@paymentId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "paymentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4069,8 +3846,8 @@ SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM payme
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM dbo.pa" +
-                "yment";
+            this._commandCollection[0].CommandText = "SELECT paymentId, loanId, paymentDate, amountPaid, remainingBalance FROM dbo.paym" +
+                "ent";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4131,47 +3908,39 @@ SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM payme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, global::System.Nullable<int> Original_paymentId, string Original_loan, global::System.Nullable<global::System.DateTime> Original_paymentDate, global::System.Nullable<decimal> Original_amountPaid, global::System.Nullable<decimal> Original_remainingBalance) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
-            if ((Original_paymentId.HasValue == true)) {
+        public virtual int Delete(int Original_paymentId, global::System.Nullable<int> Original_loanId, global::System.Nullable<global::System.DateTime> Original_paymentDate, global::System.Nullable<decimal> Original_amountPaid, global::System.Nullable<decimal> Original_remainingBalance) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_paymentId));
+            if ((Original_loanId.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_paymentId.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_loanId.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_loan == null)) {
+            if ((Original_paymentDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_paymentDate.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_loan));
-            }
-            if ((Original_paymentDate.HasValue == true)) {
+            if ((Original_amountPaid.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_paymentDate.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_amountPaid.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_amountPaid.HasValue == true)) {
+            if ((Original_remainingBalance.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_amountPaid.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_remainingBalance.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((Original_remainingBalance.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_remainingBalance.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4193,36 +3962,30 @@ SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM payme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> paymentId, string loan, global::System.Nullable<global::System.DateTime> paymentDate, global::System.Nullable<decimal> amountPaid, global::System.Nullable<decimal> remainingBalance) {
-            if ((paymentId.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(paymentId.Value));
+        public virtual int Insert(global::System.Nullable<int> loanId, global::System.Nullable<global::System.DateTime> paymentDate, global::System.Nullable<decimal> amountPaid, global::System.Nullable<decimal> remainingBalance) {
+            if ((loanId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(loanId.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((loan == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((paymentDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(paymentDate.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(loan));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((paymentDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(paymentDate.Value));
+            if ((amountPaid.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(amountPaid.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((amountPaid.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(amountPaid.Value));
+            if ((remainingBalance.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(remainingBalance.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((remainingBalance.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(remainingBalance.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4244,79 +4007,65 @@ SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM payme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> paymentId, string loan, global::System.Nullable<global::System.DateTime> paymentDate, global::System.Nullable<decimal> amountPaid, global::System.Nullable<decimal> remainingBalance, int Original_id, global::System.Nullable<int> Original_paymentId, string Original_loan, global::System.Nullable<global::System.DateTime> Original_paymentDate, global::System.Nullable<decimal> Original_amountPaid, global::System.Nullable<decimal> Original_remainingBalance, int id) {
-            if ((paymentId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(paymentId.Value));
+        public virtual int Update(global::System.Nullable<int> loanId, global::System.Nullable<global::System.DateTime> paymentDate, global::System.Nullable<decimal> amountPaid, global::System.Nullable<decimal> remainingBalance, int Original_paymentId, global::System.Nullable<int> Original_loanId, global::System.Nullable<global::System.DateTime> Original_paymentDate, global::System.Nullable<decimal> Original_amountPaid, global::System.Nullable<decimal> Original_remainingBalance, int paymentId) {
+            if ((loanId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(loanId.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((loan == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((paymentDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(paymentDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(loan));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((paymentDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(paymentDate.Value));
+            if ((amountPaid.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(amountPaid.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((amountPaid.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(amountPaid.Value));
+            if ((remainingBalance.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(remainingBalance.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((remainingBalance.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(remainingBalance.Value));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_paymentId));
+            if ((Original_loanId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_loanId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_id));
-            if ((Original_paymentId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_paymentId.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((Original_loan == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_loan));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((Original_paymentDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_paymentDate.Value));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_paymentDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((Original_amountPaid.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_amountPaid.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Original_amountPaid.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_remainingBalance.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(Original_remainingBalance.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_remainingBalance.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(paymentId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4337,8 +4086,8 @@ SELECT id, paymentId, loan, paymentDate, amountPaid, remainingBalance FROM payme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> paymentId, string loan, global::System.Nullable<global::System.DateTime> paymentDate, global::System.Nullable<decimal> amountPaid, global::System.Nullable<decimal> remainingBalance, int Original_id, global::System.Nullable<int> Original_paymentId, string Original_loan, global::System.Nullable<global::System.DateTime> Original_paymentDate, global::System.Nullable<decimal> Original_amountPaid, global::System.Nullable<decimal> Original_remainingBalance) {
-            return this.Update(paymentId, loan, paymentDate, amountPaid, remainingBalance, Original_id, Original_paymentId, Original_loan, Original_paymentDate, Original_amountPaid, Original_remainingBalance, Original_id);
+        public virtual int Update(global::System.Nullable<int> loanId, global::System.Nullable<global::System.DateTime> paymentDate, global::System.Nullable<decimal> amountPaid, global::System.Nullable<decimal> remainingBalance, int Original_paymentId, global::System.Nullable<int> Original_loanId, global::System.Nullable<global::System.DateTime> Original_paymentDate, global::System.Nullable<decimal> Original_amountPaid, global::System.Nullable<decimal> Original_remainingBalance) {
+            return this.Update(loanId, paymentDate, amountPaid, remainingBalance, Original_paymentId, Original_loanId, Original_paymentDate, Original_amountPaid, Original_remainingBalance, Original_paymentId);
         }
     }
     

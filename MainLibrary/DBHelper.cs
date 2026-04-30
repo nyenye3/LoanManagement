@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -113,7 +114,7 @@ namespace MainLibrary
         {
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
-            string sql = "SELECT * FROM Customer WHERE customerId = @customerId";
+            string sql = "SELECT * FROM Customers WHERE customerId = @customerId";
             SqlCommand cmd = new SqlCommand(sql, sqlConnection);
             cmd.Parameters.AddWithValue("@customerId", customerId);
 
@@ -208,6 +209,75 @@ namespace MainLibrary
             sqlConnection.Open();
             cmd.ExecuteNonQuery();
             sqlConnection.Close();
+        }
+
+        public List<Loan> getAllLoan()
+        {
+            List<Loan> allLoan = new List<Loan>();
+
+            //connection
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string sql = "SELECT * FROM Loan";
+            SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+
+            //open database connection
+            sqlConnection.Open();
+
+            //get data
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Loan loan = new Loan();
+
+                loan.loanId = Convert.ToInt32(reader["loanId"]);
+               // loan.firstName = reader["firstName"].ToString();
+                //loan.lastName = reader["lastName"].ToString();
+                
+
+                allLoan.Add(loan);
+            }
+
+            sqlConnection.Close();
+
+            return allLoan;
+        }
+
+        public void savePayment(Payment payment)
+        {
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string sql = "INSERT INTO Payment ( loanId, paymentDate, amountPaid, remainingBalance) " +
+                         "VALUES (@loanId, @paymentDate, @amountPaid, @remainingBalance)";
+
+            SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+
+            cmd.Parameters.AddWithValue("@loanId", payment.loanId);
+            cmd.Parameters.AddWithValue("@paymentDate", payment.paymentDate);
+            cmd.Parameters.AddWithValue("@amountPaid", payment.amountPaid);
+            cmd.Parameters.AddWithValue("@remainingBalance", payment.remainingBalance);
+            
+
+            sqlConnection.Open();
+            cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        public DataTable ExecuteQuery(string sql)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+
+            return dt;
         }
     }
 

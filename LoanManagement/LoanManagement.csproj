@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalculator.Designer.cs">
+      <DependentUpon>FrmCalculator.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCalculator.resx">
+      <DependentUpon>FrmCalculator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomerReg.resx">
       <DependentUpon>FrmCustomerReg.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="LoanManagementSystemDataSet.xsc">
       <DependentUpon>LoanManagementSystemDataSet.xsd</DependentUpon>
@@ -147,6 +157,18 @@
       <Project>{f78c7af4-a420-47c5-bc27-e48359fba1ad}</Project>
       <Name>MainLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppBackgroundAqua.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppBack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loan2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loan3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

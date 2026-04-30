@@ -147,5 +147,37 @@ namespace LoanManagement
 
 
         }
+
+        private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.customersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.loanManagementSystemDataSet);
+
+        }
+
+        private void FrmCustomerReg_Load(object sender, EventArgs e)
+        {
+             //TODO: This line of code loads data into the 'loanManagementSystemDataSet.customers' table. You can move, or remove it, as needed.
+            this.customersTableAdapter.Fill(this.loanManagementSystemDataSet.customers);
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
+            this.Close();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtEmail.Text.Contains("@"))
+            {
+                MessageBox.Show("Email must contain '@' symbol", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                txtEmail.Focus();
+                return;
+            }
+        }
     }
 }

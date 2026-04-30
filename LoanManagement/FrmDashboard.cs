@@ -21,24 +21,36 @@ namespace LoanManagement
             InitializeComponent();
         }
 
-       /* private User CurrentUser;
-        private void BuildStatusStrip()
-            
+
+        private Timer clockTimer;
+
+        public void LoadStatusBar(string username, string role)
         {
-            lblUser.Text = $"  👤 {CurrentUser.Username} ({CurrentUser.Role})";
-            lblDate.Text = $"  📅 {DateTime.Today:dd-MMM-yyyy}";
-            lblTime.Text = $"  🕐 {DateTime.Now:HH:mm:ss}";
-            lblStatus.Text = "  ✅ System Online";
+            // User info from login / DB
+            lblUser.Text = $"{username} ({role})";
 
-           // statusStrip.Items.AddRange(new ToolStripItem[]
-           // { lblUser, new ToolStripSeparator(), lblDate, new ToolStripSeparator(), lblTime, new ToolStripSeparator(), lblStatus });
-           // statusStrip.BackColor = Color.FromArgb(30, 80, 160);
-           // foreach (ToolStripItem item in statusStrip.Items)
-              //  item.ForeColor = Color.White;
+            // Date (set once)
+            lblDate.Text = DateTime.Today.ToString("dd-MMM-yyyy");
 
-           // Controls.Add(statusStrip);
-        }*/
+            // System status
+            lblStatus.Text = "System Online";
 
+            // Start live clock
+            StartClock();
+        }
+
+        private void StartClock()
+        {
+            clockTimer = new Timer();
+            clockTimer.Interval = 1000;
+
+            clockTimer.Tick += (s, e) =>
+            {
+                lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            };
+
+            clockTimer.Start();
+        }
         private void LoadForm(Form form)
         {
             // Close existing child forms
@@ -92,14 +104,43 @@ namespace LoanManagement
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            /*if (MessageBox.Show("Are you sure you want to logout?", "Logout",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+          
+            DialogResult result = MessageBox.Show(  "Are you sure you want to logout?","Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                DataStore.CurrentUser = null;
-                clock.Stop();
-                new FrmLogin2().Show();
-                Close();
-            }*/
+                FrmLogin2 login = new FrmLogin2();
+                login.Show();
+                this.Hide(); // or this.Close();
+            }
+        }
+        
+
+        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void FrmDashboard_Load(object sender, EventArgs e)
+        {
+           // pnlDasboard.Dock = DockStyle.Fill;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            
+            DialogResult result = MessageBox.Show( "Are you sure you want to exit the application?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void calculatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadForm(new FrmCalculator());
         }
     }
+    
 }
