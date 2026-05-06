@@ -138,6 +138,7 @@
             // 
             this.txtLoanId.Location = new System.Drawing.Point(228, 28);
             this.txtLoanId.Name = "txtLoanId";
+            this.txtLoanId.ReadOnly = true;
             this.txtLoanId.Size = new System.Drawing.Size(191, 20);
             this.txtLoanId.TabIndex = 6;
             // 
@@ -203,6 +204,7 @@
             this.dtpApplicationDate.Name = "dtpApplicationDate";
             this.dtpApplicationDate.Size = new System.Drawing.Size(191, 20);
             this.dtpApplicationDate.TabIndex = 13;
+            this.dtpApplicationDate.ValueChanged += new System.EventHandler(this.dtpApplicationDate_ValueChanged);
             // 
             // btnSave
             // 
@@ -224,6 +226,7 @@
             this.btnClear.TabIndex = 15;
             this.btnClear.Text = "&Clear ";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnDelete
             // 

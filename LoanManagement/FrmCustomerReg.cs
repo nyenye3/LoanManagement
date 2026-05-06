@@ -92,11 +92,7 @@ namespace LoanManagement
             db.saveCustomer(customer);
 
 
-            MessageBox.Show("Customer saved successfully ", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-
-          
+            MessageBox.Show("Customer saved successfully ", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information); 
             
         }
 
@@ -109,13 +105,7 @@ namespace LoanManagement
             List<Customer> allCustomer = db.getAllCustomer();
 
         }*/
-
-
-
-        
-
-
-
+    
 
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -171,13 +161,13 @@ namespace LoanManagement
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-            if (!txtEmail.Text.Contains("@"))
+            /*if (!txtEmail.Text.Contains("@"))
             {
                 MessageBox.Show("Email must contain '@' symbol", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 txtEmail.Focus();
                 return;
-            }
+            }*/
         }
     }
 }

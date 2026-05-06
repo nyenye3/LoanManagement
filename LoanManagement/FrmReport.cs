@@ -72,11 +72,7 @@ namespace LoanManagement
         private void FrmReport_Load(object sender, EventArgs e)
         {
             
-           /* cmbReportType.Items.Add("All Loans");
-            cmbReportType.Items.Add("Active Loans");
-            cmbReportType.Items.Add("Completed Loans");
-            cmbReportType.Items.Add("Payments");
-            cmbReportType.Items.Add("Outstanding Balance");*/
+           
         }
     
     }

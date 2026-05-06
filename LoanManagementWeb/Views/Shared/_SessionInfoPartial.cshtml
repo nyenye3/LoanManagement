@@ -1,0 +1,16 @@
+@* Partial View: _SessionInfoPartial.cshtml
+   Displays the logged-in user's name and role in the navbar *@
+
+<div class="d-flex align-items-center ms-3 session-badge">
+    <div class="me-3 text-end lh-sm">
+        <div class="fw-semibold text-white" style="font-size:0.85rem;">
+            <i class="bi bi-person-circle me-1"></i>@Context.Session.GetString("Username")
+        </div>
+        <div style="font-size:0.75rem; color:#afc8f0;">
+            @Context.Session.GetString("Role")
+        </div>
+    </div>
+    <a href="/Account/Logout" class="btn btn-sm btn-outline-light">
+        <i class="bi bi-box-arrow-right me-1"></i>Logout
+    </a>
+</div>

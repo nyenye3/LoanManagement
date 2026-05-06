@@ -1,0 +1,97 @@
+@model List<Loan>
+@{
+    ViewData["Title"] = "Loans";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold mb-0"><i class="bi bi-cash-coin me-2 text-success"></i>Loans</h4>
+    <a href="/Loan/Create" class="btn btn-success">
+        <i class="bi bi-plus-lg me-1"></i>New Loan
+    </a>
+</div>
+
+<!-- Advanced search: 2 fields (name + status) -->
+<form method="get" class="row g-2 mb-3">
+    <div class="col-md-4">
+        <input type="text" name="search" value="@ViewBag.Search" class="form-control"
+               placeholder="Search by customer name or loan ID…" />
+    </div>
+    <div class="col-md-3">
+        <select name="statusFilter" class="form-select">
+            @foreach (var s in (string[])ViewBag.Statuses)
+            {
+                <option value="@s" @(ViewBag.StatusFilter == s ? "selected" : "")>@s</option>
+            }
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-success">
+            <i class="bi bi-search me-1"></i>Search
+        </button>
+        <a href="/Loan" class="btn btn-outline-secondary ms-1">Clear</a>
+    </div>
+</form>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover lms-table mb-0">
+                <thead>
+                    <tr>
+                        <th>Loan ID</th>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                        <th>Rate %</th>
+                        <th>Term</th>
+                        <th>Date</th>
+                        <th>Balance</th>
+                        <th>Status</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr><td colspan="9" class="text-center text-muted py-4">No loans found.</td></tr>
+                    }
+                    @foreach (var l in Model.OrderByDescending(x => x.LoanID))
+                    {
+                        <tr>
+                            <td>#@l.LoanID</td>
+                            <td><strong>@l.CustomerName</strong></td>
+                            <td>@l.LoanAmount.ToString("C")</td>
+                            <td>@l.InterestRate%</td>
+                            <td>@l.LoanTermMonths mo</td>
+                            <td>@l.ApplicationDate.ToString("MMM dd, yyyy")</td>
+                            <td>@l.RemainingBalance.ToString("C")</td>
+                            <td>
+                                @{
+                                    var badge = l.Status switch {
+                                        "Active"    => "bg-success",
+                                        "Pending"   => "bg-warning text-dark",
+                                        "Paid"      => "bg-info",
+                                        "Defaulted" => "bg-danger",
+                                        _           => "bg-secondary"
+                                    };
+                                }
+                                <span class="badge @badge">@l.Status</span>
+                            </td>
+                            <td class="text-center">
+                                <a href="/Loan/Edit/@l.LoanID" class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <form method="post" action="/Loan/Delete/@l.LoanID" class="d-inline"
+                                      onsubmit="return confirm('Delete Loan #@l.LoanID?');">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

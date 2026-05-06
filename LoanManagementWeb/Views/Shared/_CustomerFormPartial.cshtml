@@ -1,0 +1,65 @@
+@model Customer
+@* Partial View: _CustomerFormPartial.cshtml
+   Reused by both Create and Edit customer views *@
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="FirstName" class="form-label fw-semibold"></label>
+        <input asp-for="FirstName" class="form-control" placeholder="First name" />
+        <span asp-validation-for="FirstName" class="text-danger small"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="LastName" class="form-label fw-semibold"></label>
+        <input asp-for="LastName" class="form-control" placeholder="Last name" />
+        <span asp-validation-for="LastName" class="text-danger small"></span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="NationalID" class="form-label fw-semibold"></label>
+        <input asp-for="NationalID" class="form-control" placeholder="123-45-6789" />
+        <span asp-validation-for="NationalID" class="text-danger small"></span>
+        <div class="form-text">Format: 123-45-6789</div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="PhoneNumber" class="form-label fw-semibold"></label>
+        <input asp-for="PhoneNumber" class="form-control" placeholder="Digits only" />
+        <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Email" class="form-label fw-semibold"></label>
+    <input asp-for="Email" type="email" class="form-control" placeholder="name@example.com" />
+    <span asp-validation-for="Email" class="text-danger small"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Address" class="form-label fw-semibold"></label>
+    <textarea asp-for="Address" class="form-control" rows="2" placeholder="Full address"></textarea>
+    <span asp-validation-for="Address" class="text-danger small"></span>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="EmploymentStatus" class="form-label fw-semibold"></label>
+        <select asp-for="EmploymentStatus" class="form-select">
+            <option value="">-- Select --</option>
+            <option value="Employed">Employed</option>
+            <option value="Self-Employed">Self-Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Retired">Retired</option>
+            <option value="Student">Student</option>
+        </select>
+        <span asp-validation-for="EmploymentStatus" class="text-danger small"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="MonthlyIncome" class="form-label fw-semibold"></label>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input asp-for="MonthlyIncome" class="form-control" placeholder="0.00" step="0.01" />
+        </div>
+        <span asp-validation-for="MonthlyIncome" class="text-danger small"></span>
+    </div>
+</div>

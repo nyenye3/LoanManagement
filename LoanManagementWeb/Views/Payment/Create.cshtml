@@ -1,0 +1,59 @@
+@model Payment
+@{
+    ViewData["Title"] = "Record Payment";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold mb-0"><i class="bi bi-cash-stack me-2 text-warning"></i>Record Payment</h4>
+    <a href="/Payment" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i>Back to List
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm" style="max-width:600px;">
+    <div class="card-body p-4">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+            <div class="mb-3">
+                <label asp-for="LoanID" class="form-label fw-semibold"></label>
+                <select asp-for="LoanID" asp-items="ViewBag.Loans" class="form-select">
+                    <option value="">-- Select Active Loan --</option>
+                </select>
+                <span asp-validation-for="LoanID" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PaymentDate" class="form-label fw-semibold"></label>
+                <input asp-for="PaymentDate" type="date" class="form-control"
+                       max="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="PaymentDate" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <!-- Range Validator: $0.01 – $10,000,000 -->
+                <label asp-for="AmountPaid" class="form-label fw-semibold"></label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input asp-for="AmountPaid" class="form-control" placeholder="0.00" step="0.01" />
+                </div>
+                <span asp-validation-for="AmountPaid" class="text-danger small"></span>
+                <div class="form-text">Must not exceed the loan's remaining balance.</div>
+            </div>
+
+            <hr />
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-warning px-4">
+                    <i class="bi bi-save me-1"></i>Record Payment
+                </button>
+                <a href="/Payment" class="btn btn-outline-secondary px-4">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+}

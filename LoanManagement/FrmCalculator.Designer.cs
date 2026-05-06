@@ -40,6 +40,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtMonthly = new System.Windows.Forms.TextBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtAmount
@@ -86,9 +87,9 @@
             this.lblTerm.AutoSize = true;
             this.lblTerm.Location = new System.Drawing.Point(86, 186);
             this.lblTerm.Name = "lblTerm";
-            this.lblTerm.Size = new System.Drawing.Size(61, 13);
+            this.lblTerm.Size = new System.Drawing.Size(102, 13);
             this.lblTerm.TabIndex = 5;
-            this.lblTerm.Text = "Loan Term ";
+            this.lblTerm.Text = "Loan Term (Months)";
             // 
             // btnCalculate
             // 
@@ -120,18 +121,20 @@
             // 
             // btnClear
             // 
+            this.btnClear.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnClear.Location = new System.Drawing.Point(433, 270);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtTotal
             // 
             this.txtTotal.Location = new System.Drawing.Point(156, 322);
             this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 10;
             // 
@@ -139,8 +142,20 @@
             // 
             this.txtMonthly.Location = new System.Drawing.Point(480, 330);
             this.txtMonthly.Name = "txtMonthly";
+            this.txtMonthly.ReadOnly = true;
             this.txtMonthly.Size = new System.Drawing.Size(100, 20);
             this.txtMonthly.TabIndex = 11;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExit.Location = new System.Drawing.Point(581, 270);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 12;
+            this.btnExit.Text = "&Exit ";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // FrmCalculator
             // 
@@ -148,6 +163,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtMonthly);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.btnClear);
@@ -181,5 +197,6 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtMonthly;
+        private System.Windows.Forms.Button btnExit;
     }
 }

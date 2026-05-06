@@ -97,7 +97,7 @@ namespace LoanManagement
 
         {
 
-            decimal loanAmount = decimal.Parse(txtLoanAmount.Text);
+             decimal.TryParse(txtLoanAmount.Text, out decimal loanAmount);
 
             if (loanAmount <= 0)
         {
@@ -107,6 +107,32 @@ namespace LoanManagement
             return;
          }
 
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtLoanId.Clear();
+            cmbCustomerId.SelectedIndex = -1;
+            txtLoanAmount.Clear();
+            txtInterestRate.Clear();
+            txtLoanTerm.Clear();
+            cmbStatus.SelectedIndex = -1;
+            dtpApplicationDate.Value = DateTime.Now;
+
+
+        }
+
+        private void dtpApplicationDate_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime paymentDate = dtpApplicationDate.Value;
+
+            if (paymentDate > DateTime.Now)
+            {
+                MessageBox.Show("Application date cannot be in the future", "Date Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                dtpApplicationDate.Focus();
+                return;
+            }
         }
 
         /* private void loanBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)

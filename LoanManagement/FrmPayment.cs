@@ -23,8 +23,8 @@ namespace LoanManagement
             DBHelper db = new DBHelper();
 
             cmbLoanId.DataSource = db.getAllCustomers();
-           cmbLoanId.DisplayMember = "customerId";   // what user sees
-           cmbLoanId.ValueMember = "customerId";   // actual value
+           cmbLoanId.DisplayMember = "customerId";   
+           cmbLoanId.ValueMember = "customerId";   
 
         }
         private void FrmPayment_Load(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace LoanManagement
             DBHelper db = new DBHelper();
             db.savePayment(payment);
 
-            MessageBox.Show("Payment Information saved successfully!");
+            MessageBox.Show("Payment Information saved successfully!", "Payment Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -79,7 +79,7 @@ namespace LoanManagement
 
         private void txtAmountPaid_TextChanged(object sender, EventArgs e)
         {
-            decimal amountPaid = decimal.Parse(txtAmountPaid.Text);
+            decimal.TryParse(txtAmountPaid.Text, out decimal amountPaid);
 
             if (amountPaid <= 0)
             {
@@ -87,6 +87,16 @@ namespace LoanManagement
                 txtAmountPaid.Focus();
                 return;
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtPaymenId.Clear();
+            cmbLoanId.SelectedIndex = -1;
+            dtpPaymentDate.Value = DateTime.Now;
+            txtAmountPaid.Clear();
+            txtRemainingBalance.Clear();
+
         }
     }
 }

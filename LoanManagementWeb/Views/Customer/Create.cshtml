@@ -1,0 +1,37 @@
+@model Customer
+@{
+    ViewData["Title"] = "Add Customer";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold mb-0"><i class="bi bi-person-plus me-2 text-primary"></i>Add Customer</h4>
+    <a href="/Customer" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i>Back to List
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+            <input asp-for="CustomerID" type="hidden" />
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+            @* Reuse the shared customer form partial view *@
+            @await Html.PartialAsync("_CustomerFormPartial", Model)
+
+            <hr />
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="bi bi-save me-1"></i>Save Customer
+                </button>
+                <a href="/Customer" class="btn btn-outline-secondary px-4">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+}

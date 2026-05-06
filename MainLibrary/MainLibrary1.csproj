@@ -73,7 +73,6 @@
     <None Include="LoanManagementSystemDataSet.xss">
       <DependentUpon>LoanManagementSystemDataSet.xsd</DependentUpon>
     </None>
-    <None Include="MainLibrary1.csproj" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

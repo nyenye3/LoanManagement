@@ -1,0 +1,126 @@
+/* ── Loan Management System – site.css ─────────────────────────── */
+
+:root {
+    --lms-blue:   #163476;
+    --lms-light:  #f0f4fb;
+}
+
+body {
+    background-color: var(--lms-light);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────── */
+.lms-navbar {
+    background: linear-gradient(135deg, var(--lms-blue) 0%, #1e4db7 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    padding: 0.6rem 1.5rem;
+}
+
+.lms-navbar .nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 0.4rem 0.75rem;
+    transition: background 0.2s;
+}
+
+.lms-navbar .nav-link:hover,
+.lms-navbar .nav-link.active {
+    background: rgba(255,255,255,0.15);
+    color: #fff !important;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────── */
+.card {
+    border-radius: 12px;
+}
+
+/* ── Stat cards ─────────────────────────────────────────────────── */
+.stat-card .card-body {
+    padding: 1.2rem 1.4rem;
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* ── Tables ─────────────────────────────────────────────────────── */
+.lms-table thead th {
+    background: var(--lms-blue);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.8rem 1rem;
+    border: none;
+}
+
+.lms-table tbody tr:hover {
+    background-color: #eef2fc;
+}
+
+.lms-table td {
+    vertical-align: middle;
+    padding: 0.7rem 1rem;
+    border-color: #e9ecef;
+}
+
+/* ── Login page ─────────────────────────────────────────────────── */
+.login-page {
+    background: linear-gradient(135deg, var(--lms-blue) 0%, #1a56c4 100%);
+    min-height: 100vh;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.login-header {
+    background: linear-gradient(135deg, var(--lms-blue) 0%, #1e4db7 100%);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+.lms-footer {
+    border-top: 1px solid #dee2e6;
+    background: #fff;
+}
+
+/* ── Form controls ──────────────────────────────────────────────── */
+.form-control:focus,
+.form-select:focus {
+    border-color: #1e4db7;
+    box-shadow: 0 0 0 0.2rem rgba(30,77,183,.18);
+}
+
+.input-group-text {
+    background: #f8f9fa;
+    color: #495057;
+}

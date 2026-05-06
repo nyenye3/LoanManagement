@@ -1,0 +1,65 @@
+@model List<Payment>
+@{
+    ViewData["Title"] = "Payments";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold mb-0"><i class="bi bi-credit-card me-2 text-warning"></i>Payments</h4>
+    <a href="/Payment/Create" class="btn btn-warning">
+        <i class="bi bi-plus-lg me-1"></i>Record Payment
+    </a>
+</div>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-md-4">
+        <input type="text" name="search" value="@ViewBag.Search" class="form-control"
+               placeholder="Search by Loan ID…" />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-warning">
+            <i class="bi bi-search me-1"></i>Search
+        </button>
+        <a href="/Payment" class="btn btn-outline-secondary ms-1">Clear</a>
+    </div>
+</form>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover lms-table mb-0">
+                <thead>
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>Loan ID</th>
+                        <th>Date</th>
+                        <th>Amount Paid</th>
+                        <th>Remaining Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr><td colspan="5" class="text-center text-muted py-4">No payments found.</td></tr>
+                    }
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>#@p.PaymentID</td>
+                            <td>Loan #@p.LoanID</td>
+                            <td>@p.PaymentDate.ToString("MMM dd, yyyy")</td>
+                            <td class="text-success fw-semibold">@p.AmountPaid.ToString("C")</td>
+                            <td>@p.RemainingBalance.ToString("C")</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot class="table-light">
+                    <tr>
+                        <td colspan="3" class="fw-bold text-end">Total Collected:</td>
+                        <td class="fw-bold text-success">@Model.Sum(p => p.AmountPaid).ToString("C")</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

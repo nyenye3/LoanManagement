@@ -111,7 +111,7 @@ namespace LoanManagement
             {
                 FrmLogin2 login = new FrmLogin2();
                 login.Show();
-                this.Hide(); // or this.Close();
+                this.Hide(); 
             }
         }
         
@@ -129,7 +129,7 @@ namespace LoanManagement
         private void btnExit_Click(object sender, EventArgs e)
         {
             
-            DialogResult result = MessageBox.Show( "Are you sure you want to exit the application?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show( "Are you sure you want to exit the application?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
