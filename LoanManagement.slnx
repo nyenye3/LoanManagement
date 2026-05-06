@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="../../../Downloads/LoanManagement-master update (2)/LoanManagementWeb/LoanManagementWeb.csproj" />
   <Project Path="LoanManagement/LoanManagement.csproj" Id="43eb4c18-ced5-4868-a52f-11d37fbb0742" />
   <Project Path="MainLibrary/MainLibrary.csproj" Id="f78c7af4-a420-47c5-bc27-e48359fba1ad" />
 </Solution>
